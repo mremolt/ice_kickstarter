@@ -4,8 +4,6 @@ PATH
     ice_kickstarter (0.0.1)
       json
       rails (~> 3.2.9)
-      redcarpet
-      yard
 
 GEM
   remote: http://rubygems.org/
@@ -119,4 +117,6 @@ DEPENDENCIES
   generator_spec
   ice_kickstarter!
   pry
+  redcarpet
   rspec-rails
+  yard
