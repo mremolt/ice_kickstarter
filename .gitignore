@@ -3,6 +3,7 @@
 log/*.log
 pkg/
 doc/*
+spec/tmp/*
 test/dummy/db/*.sqlite3
 test/dummy/log/*.log
 test/dummy/tmp/
