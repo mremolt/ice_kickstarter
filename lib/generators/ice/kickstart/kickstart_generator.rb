@@ -1,13 +1,16 @@
 require 'uri'
+require 'generators/ice/language'
 
 module Ice
   module Generators
     class KickstartGenerator < ::Rails::Generators::Base
-      class_option :config, :type => :string, :aliases => '-c', :desc => 'Path to...', :required => true
+      include Language
+
+      argument :path, :type => :string
 
       def read_config_file
         @configuration ||= begin
-          if path = options['config']
+          if path
             contents = if URI(path).is_a?(URI::HTTP)
               open(path, 'Accept' => 'application/json') { |io| io.read }
             else
@@ -20,7 +23,7 @@ module Ice
               name = generator['name']
               options = Array(generator['options'])
 
-              generate(name, options)
+              Rails::Generators.invoke(name, options, :behavior => behavior)
             end
           end
         end
