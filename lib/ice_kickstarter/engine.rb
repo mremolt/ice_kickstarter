@@ -1,5 +1,9 @@
 module IceKickstarter
   class Engine < Rails::Engine
-    isolate_namespace IceKickstarter
+    config.generators do |generator|
+      generator.test_framework :rspec, :fixture => true
+      generator.assets false
+      generator.helper false
+    end
   end
 end
