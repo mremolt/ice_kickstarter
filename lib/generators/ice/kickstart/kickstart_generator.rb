@@ -1,11 +1,8 @@
 require 'uri'
-require 'generators/ice/language'
 
 module Ice
   module Generators
     class KickstartGenerator < ::Rails::Generators::Base
-      include Language
-
       argument :path, :type => :string
 
       def read_config_file
