@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
 
   gem.bindir      = 'bin'
   gem.executables = []
+  gem.test_files  = Dir['spec/**/*']
   gem.files       = Dir['lib/**/*.rb', 'LICENSE', 'Rakefile', 'README.md', 'CHANGELOG.md']
 
   gem.add_dependency 'rails', '~> 3.2.9'
