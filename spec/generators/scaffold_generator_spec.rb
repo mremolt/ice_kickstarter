@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 require 'generator_spec/test_case'
-require 'generators/ice/scaffold/scaffold_generator'
+require 'generators/cms/scaffold/scaffold_generator'
 
-describe Ice::Generators::ScaffoldGenerator do
+describe Cms::Generators::ScaffoldGenerator do
   include GeneratorSpec::TestCase
 
   destination File.expand_path('../../tmp', __FILE__)

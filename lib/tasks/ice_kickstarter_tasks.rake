@@ -42,7 +42,7 @@ class Deployment
   end
 end
 
-namespace :ice do
+namespace :cms do
   namespace :deploy do
     desc 'Deploys to live cloud: staging -> deploy'
     task :live do

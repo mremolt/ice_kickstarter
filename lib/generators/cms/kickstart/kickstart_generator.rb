@@ -1,6 +1,6 @@
 require 'uri'
 
-module Ice
+module Cms
   module Generators
     class KickstartGenerator < ::Rails::Generators::Base
       argument :path, :type => :string

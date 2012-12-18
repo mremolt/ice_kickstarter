@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 require 'generator_spec/test_case'
-require 'generators/ice/controller/controller_generator'
+require 'generators/cms/controller/controller_generator'
 
-describe Ice::Generators::ControllerGenerator do
+describe Cms::Generators::ControllerGenerator do
   include GeneratorSpec::TestCase
 
   destination File.expand_path('../../tmp', __FILE__)
