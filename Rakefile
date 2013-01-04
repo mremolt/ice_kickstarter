@@ -13,19 +13,15 @@ task :default => :spec
 
 namespace :spec do
   task :integration do
-    app_path = 'spec/tmp/test_app'
-
+    app_path = 'tmp/test_app'
     rm_rf app_path
-    sh "rails generate app #{app_path} --skip-test-unit --skip-bundle"
+    mkdir_p app_path
+    sh "rsync -a config #{app_path}/"
 
-    chdir app_path do
-      Bundler.with_clean_env do
-        sh "bundle --local || bundle"
-
-        sh "bundle exec rails generate cms:model news"
-
-        sh "bundle exec rake spec"
-      end
+    Bundler.with_clean_env do
+      sh "rails new #{app_path} --skip-test-unit --skip-active-record --template template.rb"
+      sh "cd #{app_path} && bundle exec rails generate cms:model news"
+      sh "cd #{app_path} && bundle exec rake spec"
     end
   end
 end

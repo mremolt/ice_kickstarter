@@ -1,6 +1,7 @@
 .bundle/
 .yardoc
-config/local.yml
+config/*
+tmp/*
 log/*.log
 pkg/
 doc/*

@@ -6,6 +6,10 @@ module Cms
       def create_model_file
         template 'model.rb', File.join('app/models', "#{file_name}.rb")
       end
+
+      def create_spec_files
+        template 'spec.rb', File.join('spec/models', "#{file_name}_spec.rb")
+      end
     end
   end
 end
