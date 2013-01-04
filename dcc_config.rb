@@ -3,5 +3,5 @@ send_notifications_to({
 })
 
 buckets 'kickstarter' do
-  bucket('spec:integration').performs_rake_tasks 'spec:integration'
+  bucket('test:integration').performs_rake_tasks 'test:integration'
 end
