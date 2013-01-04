@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     ice_kickstarter (0.0.1)
-      json
       rails (~> 3.2.9)
 
 GEM
