@@ -6,7 +6,7 @@ require 'generators/cms/model/model_generator'
 describe Cms::Generators::ModelGenerator do
   include GeneratorSpec::TestCase
 
-  destination File.expand_path('../../tmp', __FILE__)
+  destination File.expand_path('../../../tmp', __FILE__)
   arguments ['news']
 
   before do
