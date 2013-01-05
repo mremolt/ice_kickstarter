@@ -6,11 +6,7 @@ require 'ice_kickstarter/rake/configuration_helper'
 module IceKickstarter
   module Rake
     class IntegrationTask < ::Rake::TaskLib
-      attr_reader :app_path
-
       def initialize
-        @app_path = 'tmp/test_app'
-
         namespace :test do
           desc 'Run Kickstarter Integration Tests'
           task :integration do
@@ -27,14 +23,12 @@ module IceKickstarter
 
       def prepare_directory
         rm_rf(app_path)
-        mkdir_p("#{app_path}/config")
+        mkdir_p(config_path)
       end
 
       def create_configuration_files
-        file = "#{ENV['HOME']}/.config/infopark/kickstarter.yml"
-
-        ConfigurationHelper.new(file, :cms, "#{app_path}/config/rails_connector.yml").write
-        ConfigurationHelper.new(file, :crm, "#{app_path}/config/custom_cloud.yml").write
+        ConfigurationHelper.new(local_configuration_file, :cms, "#{config_path}/rails_connector.yml").write
+        ConfigurationHelper.new(local_configuration_file, :crm, "#{config_path}/custom_cloud.yml").write
       end
 
       def create_application
@@ -53,6 +47,31 @@ module IceKickstarter
         Bundler.with_clean_env do
           sh "cd #{app_path} && bundle exec rake spec"
         end
+      end
+
+      def app_path
+        'tmp/test_app'
+      end
+
+      def config_path
+        "#{app_path}/config"
+      end
+
+      def local_configuration_file
+        file_locations = [
+          'config/local.yml',
+          "#{ENV["HOME"]}/.config/infopark/kickstarter.yml",
+        ]
+
+        file = file_locations.detect do |path|
+          Pathname(path).exist?
+        end
+
+        unless file
+          raise 'Local configuration file not found. Provide either "config/local.yml" or "~/.config/infopark/kickstarter.yml". See "config/local.yml.template" for an example.'
+        end
+
+        file
       end
     end
   end

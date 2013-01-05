@@ -1,5 +1,3 @@
-require 'helpful_configuration'
-
 module IceKickstarter
   module Rake
     class ConfigurationHelper
@@ -20,6 +18,8 @@ module IceKickstarter
           file.write(content)
         end
       end
+
+      private
 
       def cms_configuration
         {
@@ -49,27 +49,6 @@ module IceKickstarter
       end
 
       def local_configuration
-        @local_configuration ||= HelpfulConfiguration.new(content, file).tap do |config|
-          config.explain(
-            'integration_test_tenant_name',
-            'Name of the tenant for integration test'
-          )
-          config.explain(
-            'integration_test_cms_api_key',
-            'CMS api_key for integration test'
-          )
-          config.explain(
-            'integration_test_content_read_api_key',
-            'Content Read api_key for integration test'
-          )
-          config.explain(
-            'integration_test_crm_api_key',
-            'CRM api_key for integration test'
-          )
-        end
-      end
-
-      def content
         content = File.read(file)
 
         YAML.load(content)

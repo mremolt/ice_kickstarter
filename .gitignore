@@ -1,6 +1,8 @@
 .bundle/
 .yardoc
-config/*
+config/local.yml
+config/rails_connectory.yml
+config/custom_cloud.yml
 tmp/*
 log/*.log
 pkg/

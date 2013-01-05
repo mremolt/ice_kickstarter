@@ -26,7 +26,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'rails', '~> 3.2.9'
 
-  gem.add_development_dependency 'helpful_configuration'
   gem.add_development_dependency 'yard'
   gem.add_development_dependency 'redcarpet'
   gem.add_development_dependency 'pry'
