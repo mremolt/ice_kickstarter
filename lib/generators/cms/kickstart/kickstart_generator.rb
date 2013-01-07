@@ -26,9 +26,13 @@ module Cms
         end
       end
 
-      def initialize_rspec
+      def include_and_install_rspec
         gem('rspec-rails')
         generate('rspec:install')
+      end
+
+      def include_haml
+        gem('haml-rails')
       end
     end
   end
