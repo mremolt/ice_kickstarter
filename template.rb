@@ -4,6 +4,8 @@ gem 'therubyracer', :require => 'v8'
 gem 'libv8', '~> 3.11.8'
 gem 'ice_kickstarter', :path => '../../../'
 
+run('bundle install')
+
 generate('cms:kickstart', '--force')
 generate('rails_connector:install', '--force')
 
