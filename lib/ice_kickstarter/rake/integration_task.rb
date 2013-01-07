@@ -24,11 +24,15 @@ module IceKickstarter
       def prepare_directory
         rm_rf(app_path)
         mkdir_p(config_path)
+
+        puts 'prepared directory...'
       end
 
       def create_configuration_files
         ConfigurationHelper.new(local_configuration_file, :cms, "#{config_path}/rails_connector.yml").write
         ConfigurationHelper.new(local_configuration_file, :crm, "#{config_path}/custom_cloud.yml").write
+
+        puts 'created configuration files...'
       end
 
       def create_application
