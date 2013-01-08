@@ -1,12 +1,23 @@
-gem 'infopark_rails_connector'
-gem 'infopark_cloud_connector'
-gem 'therubyracer', :require => 'v8'
-gem 'libv8', '~> 3.11.8'
-gem 'ice_kickstarter', :path => '../../../'
+gem('infopark_rails_connector', :path => '../../../forks/rails_connector/rails_connector')
+gem('infopark_cloud_connector', :path => '../../../forks/rails_connector/cloud_connector')
+gem('kvom', :path => '../../../forks/rails_connector/kvom')
+gem('therubyracer', '0.10.2', :require => 'v8')
+gem('libv8', '3.3.10.2')
+gem('ice_kickstarter', :path => '../../../')
+gem('cells')
+gem('haml-rails')
+
+gem_group :assets do
+  gem('twitter-bootstrap-rails', '2.1.3')
+end
+
+gem_group :test, :development do
+  gem('rspec-rails')
+  gem('pry-rails')
+end
 
 run('bundle install')
 
-generate('cms:kickstart', '--force')
 generate('rails_connector:install', '--force')
 
 remove_file 'public/index.html'
@@ -41,3 +52,5 @@ create_file 'config/initializers/crm_connector.rb', %{
 
   RailsConnector::Configuration.use_recaptcha_on_user_registration = false
 }
+
+generate('cms:kickstart')

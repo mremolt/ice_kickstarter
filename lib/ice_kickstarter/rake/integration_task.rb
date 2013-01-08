@@ -38,6 +38,8 @@ module IceKickstarter
       def create_application
         Bundler.with_clean_env do
           sh "rails new #{app_path} --skip-test-unit --skip-active-record --template template.rb"
+
+          sh "cd #{app_path} && bundle exec rake cms:migrate"
         end
       end
 

@@ -1,4 +1,4 @@
-module Ice
+module Cms
   module Generators
     module Language
       def self.included(base)
