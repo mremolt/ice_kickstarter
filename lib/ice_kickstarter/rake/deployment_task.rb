@@ -7,14 +7,9 @@ module IceKickstarter
       def initialize
         namespace :cms do
           namespace :deploy do
-            desc 'Deploys to live cloud: staging -> deploy'
+            desc 'Deploys to live cloud'
             task :live do
               live
-            end
-
-            desc 'Deploys to staging cloud: master -> staging'
-            task :staging do
-              staging
             end
 
             desc 'Gets status information of the last deployment'
@@ -34,23 +29,16 @@ module IceKickstarter
       end
 
       def live
-        sh "git fetch", :verbose => true
+        sh 'git fetch', :verbose => true
 
-        if %x(git rev-parse origin/staging).strip == %x(git rev-parse origin/deploy).strip
+        if %x(git rev-parse origin/master).strip == %x(git rev-parse origin/deploy).strip
           sh "curl -X POST #{url}/deployments?token=#{api_key}", :verbose => true
 
           puts
         else
           sh 'rake assets:precompile && rake assets:clean'
-          sh 'git push origin origin/staging:deploy', :verbose => true
+          sh 'git push origin origin/master:deploy', :verbose => true
         end
-      end
-
-      def staging
-        sh 'rake assets:precompile && rake assets:clean'
-        sh 'git push origin master:staging', :verbose => true
-
-        puts 'Now tell Anne to click "deploy"'
       end
 
       def url
