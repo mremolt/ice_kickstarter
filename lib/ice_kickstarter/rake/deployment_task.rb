@@ -12,9 +12,11 @@ module IceKickstarter
               live
             end
 
-            desc 'Gets status information of the last deployment'
-            task :status do
-              status
+            desc 'Get deployment status for last deployment or given deployment id'
+            task :status, [:id] do |_, args|
+              args.with_defaults(:id => 'current')
+
+              status(args[:id])
             end
           end
         end
@@ -22,8 +24,8 @@ module IceKickstarter
 
       private
 
-      def status
-        sh "curl -X GET #{url}/deployments/current?token=#{api_key}", :verbose => true
+      def status(id)
+        sh "curl -X GET #{url}/deployments/#{id}?token=#{api_key}", :verbose => true
 
         puts
       end
