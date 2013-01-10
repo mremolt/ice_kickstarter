@@ -1,0 +1,2 @@
+class OverviewPageController < CmsController
+end

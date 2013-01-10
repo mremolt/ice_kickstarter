@@ -1,0 +1,16 @@
+.well.sidebar-nav
+  %ul.nav.nav-list
+    %li.nav-header
+      Meta
+
+    %li
+      - if @current_user
+        = link_to(cms_path(@login_page), :method => :delete, :title => @current_user.login) do
+          = t('logout')
+      - else
+        = link_to(cms_path(@login_page)) do
+          = t('login')
+
+    %li
+      = link_to(cms_path(@search_page)) do
+        = display_title(@search_page)

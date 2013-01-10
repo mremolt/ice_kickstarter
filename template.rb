@@ -4,17 +4,6 @@ gem('kvom', :path => '../../../forks/rails_connector/kvom')
 gem('therubyracer', '0.10.2', :require => 'v8')
 gem('libv8', '3.3.10.2')
 gem('ice_kickstarter', :path => '../../../')
-gem('cells')
-gem('haml-rails')
-
-gem_group :assets do
-  gem('twitter-bootstrap-rails', '2.1.3')
-end
-
-gem_group :test, :development do
-  gem('rspec-rails')
-  gem('pry-rails')
-end
 
 run('bundle install')
 

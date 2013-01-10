@@ -1,0 +1,2 @@
+class LandingPageController < CmsController
+end
