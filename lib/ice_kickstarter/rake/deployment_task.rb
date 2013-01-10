@@ -1,9 +1,13 @@
 require 'rake'
 require 'rake/tasklib'
 
+require 'ice_kickstarter/rake/credential_helper'
+
 module IceKickstarter
   module Rake
     class DeploymentTask < ::Rake::TaskLib
+      include CredentialHelper
+
       def initialize
         namespace :cms do
           namespace :deploy do
@@ -41,18 +45,6 @@ module IceKickstarter
           sh 'rake assets:precompile && rake assets:clean'
           sh 'git push origin origin/master:deploy', :verbose => true
         end
-      end
-
-      def url
-        config['url']
-      end
-
-      def api_key
-        config['api_key']
-      end
-
-      def config
-        YAML.load_file(File.join(Rails.root, 'config/deploy.yml'))
       end
     end
   end
