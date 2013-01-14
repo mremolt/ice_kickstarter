@@ -1,0 +1,15 @@
+%ul.nav.pull-right
+  %li.dropdown
+    %a.dropdown-toggle{:'data-toggle' => 'dropdown', :href => '#'}
+      Workspace:
+      = RailsConnector::CmsRestApi.get("workspaces/#{RailsConnector::Workspace.current.id}")['title']
+
+      %b.caret
+
+    %ul.dropdown-menu
+      - RailsConnector::CmsRestApi.get('workspaces')['results'].each do |workspace|
+        - next if workspace['id'] == RailsConnector::Workspace.current.id
+
+        %li
+          = link_to("#{request.path}?_rc-ws=#{workspace['id']}") do
+            = workspace['title']
