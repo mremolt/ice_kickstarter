@@ -56,7 +56,7 @@ To run all cms migrations:
 
     $ rake cms:migrate
 
-The command only processes new, not yet released cms migrations that are placed in the
+The command only processes new, not yet released CMS migrations that are placed in the
 ```cms/migrate``` directory. Migrations are ordered by their version number.
 
 To publish all processed migrations:
