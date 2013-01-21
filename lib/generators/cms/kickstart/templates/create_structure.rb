@@ -25,11 +25,11 @@ class CreateStructure < ::RailsConnector::Migrations::Migration
       :locale => 'de'
     )
 
-    create_obj(:_path => '/resources', :_obj_class => 'Publication')
-    create_obj(:_path => '/resources/images', :_obj_class => 'Publication')
-    create_obj(:_path => '/resources/audio', :_obj_class => 'Publication')
-    create_obj(:_path => '/resources/videos', :_obj_class => 'Publication')
-    create_obj(:_path => '/resources/pdfs', :_obj_class => 'Publication')
+    create_obj(:_path => '/resources', :_obj_class => 'Publication', :title => 'Resources')
+    create_obj(:_path => '/resources/images', :_obj_class => 'Publication', :title => 'Images')
+    create_obj(:_path => '/resources/audio', :_obj_class => 'Publication', :title => 'Audio')
+    create_obj(:_path => '/resources/videos', :_obj_class => 'Publication', :title => 'Videos')
+    create_obj(:_path => '/resources/pdfs', :_obj_class => 'Publication', :title => 'Pdfs')
 
     create_obj(:_path => '/website/de/_boxes', :_obj_class => 'Publication')
     create_obj(:_path => '/website/de/_boxes/box_text', :_obj_class => 'BoxText', :title => 'BoxText', :body => 'Inhalt von BoxText', :sort_key => '1')
