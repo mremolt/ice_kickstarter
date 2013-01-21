@@ -129,6 +129,10 @@ module Cms
         directory('config')
       end
 
+      def extend_gitignore
+        append_file '.gitignore', 'config/deploy.yml'
+      end
+
       def create_box_model
         gem('cells')
 
