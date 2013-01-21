@@ -14,7 +14,7 @@ class CreateStructure < ::RailsConnector::Migrations::Migration
 
     create_obj(:_path => '/website/de/beispiel', :_obj_class => 'ContentPage', :title => 'Beispielseite')
 
-    create_obj(:_path => '/website/de/_meta/error_404', :_obj_class => 'ErrorPage', :title => 'Seite nicht gefunden', :body => 'Leider ist die Seite nicht da.')
+    create_obj(:_path => '/website/de/_meta/error_404', :_obj_class => 'ErrorPage', :title => 'Seite nicht gefunden', :body => 'Leider ist die Seite nicht da.', :show_in_navigation => 'No')
     create_obj(:_path => '/website/de/_meta/login', :_obj_class => 'LoginPage', :title => 'Anmelden')
     create_obj(:_path => '/website/de/_meta/search', :_obj_class => 'SearchPage', :title => 'Suche')
     update_obj(
