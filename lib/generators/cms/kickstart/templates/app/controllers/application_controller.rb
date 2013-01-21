@@ -21,11 +21,13 @@ class ApplicationController < ActionController::Base
       request.host =~ /elb\.amazonaws\.com|\.dev|localhost$/ &&
       logged_in? &&
       current_user.role_names.include?('cmsadmin')
+
     Rails.logger.debug "detect_preview_mode: #{session[:edit_marker]}"
   end
 
   def detect_live_environment
     session[:live_environment] = %w(production staging).include?(Rails.env) && request.host !~ /elb\.amazonaws\.com$/
+
     Rails.logger.debug "detect_live_environment: #{session[:live_environment]}"
   end
 
@@ -44,11 +46,13 @@ class ApplicationController < ActionController::Base
 
   def set_language
     session[:language] = I18n.locale = determine_language
+
     Rails.logger.debug("set_language: using LANG=#{I18n.locale}")
   end
 
   def determine_language
     Rails.logger.debug("determine_language: session LANG=#{session[:language]}")
+
     session[:language].presence || I18n.default_locale
   end
 

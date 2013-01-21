@@ -8,11 +8,11 @@ class BoxCell < Cell::Rails
   def show(page, box)
     @page = page
     @box = box
+
     render
   end
 
   def edit_marker
     render if session[:edit_marker]
   end
-
 end

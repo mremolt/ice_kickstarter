@@ -1,5 +1,4 @@
 class Website < Obj
-
   def homepage
     self.class.default_homepage
   end
@@ -7,5 +6,4 @@ class Website < Obj
   def website
     self
   end
-
 end

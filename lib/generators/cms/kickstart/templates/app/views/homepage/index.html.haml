@@ -1,4 +1,5 @@
-%h2= display_field(@obj, :title)
+%h2
+  = display_field(@obj, :title)
 
 - @obj.boxes.each do |box|
-  = render_cell :box, :show, @obj, box
+  = render_cell(:box, :show, @obj, box)

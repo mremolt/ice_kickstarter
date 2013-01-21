@@ -20,7 +20,6 @@ module Cms
         :desc => 'Possible values for attributes of type (enum | multienum).'
 
       def create_migration_file
-        # TODO: Check if attributes already exist.
         migration_template('migration.rb', "cms/migrate/create_#{file_name}_attribute.rb")
       end
 
