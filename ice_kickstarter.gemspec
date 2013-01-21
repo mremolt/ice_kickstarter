@@ -24,7 +24,7 @@ Gem::Specification.new do |gem|
   gem.test_files  = Dir['spec/**/*']
   gem.files       = Dir['lib/**/*.rb', 'LICENSE', 'Rakefile', 'README.md', 'CHANGELOG.md']
 
-  gem.add_dependency 'rails', '~> 3.2.9'
+  gem.add_dependency 'rails', '~> 3.2.11'
 
   gem.add_development_dependency 'yard'
   gem.add_development_dependency 'redcarpet'
