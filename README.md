@@ -23,6 +23,47 @@ Or install it yourself as:
 To generate the basic code and CMS structure:
 
     $ rails generate cms:kickstart
+    
+## CMS Structure
+
+When the ```cms:kickstart``` generator is finished the following CMS hierarchy is created:
+
+    |- website
+    |    |- homepage
+    |        |- _meta
+    |            |- error_page
+    |            |- login_page
+    |            |- search_page
+    |
+    |- resources
+        |- videos
+        |- audio
+        |- images
+        |- pdfs
+        
+Together with the CMS hierarchy, some CMS object classes and attributes are created as well:
+
+### Attributes ###
+
+* show_in_navigation:enum (Yes No)
+* error_404_page:linklist
+* search_page:linklist
+* locale:string
+* source:linklist
+* caption:string
+* sort_key:string
+
+### Object Classes ###
+
+* Root
+* Homepage
+* Website
+* ContentPage
+* ErrorPage
+* LoginPage
+* SearchPage
+* BoxText
+* BoxImage
 
 ## Generators
 
