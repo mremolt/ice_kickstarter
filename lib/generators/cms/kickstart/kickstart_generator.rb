@@ -36,13 +36,13 @@ module Cms
         end
       end
 
-      def include_pry
+      def include_dev_tools
         gem_group :test, :development do
-          gem('pry-rails')
+          gem('pry-rails', '0.2.2')
         end
       end
 
-      def install_rspec
+      def install_test_framework
         gem_group :test, :development do
           gem('rspec-rails')
         end
@@ -50,7 +50,7 @@ module Cms
         generate('rspec:install')
       end
 
-      def include_and_configure_haml
+      def include_and_configure_template_engine
         gem('haml-rails')
 
         application_erb_file = 'app/views/layouts/application.html.erb'
