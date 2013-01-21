@@ -22,7 +22,7 @@ Or install it yourself as:
 
 To generate the basic code and CMS structure:
 
-    $ rails generator cms:kickstart
+    $ rails generate cms:kickstart
 
 ## Generators
 
