@@ -62,7 +62,7 @@ module Cms
 
       def install_twitter_bootstrap
         gem_group :assets do
-          gem('twitter-bootstrap-rails', '2.1.3')
+          gem('less-rails-bootstrap', '2.2.1')
         end
       end
 
