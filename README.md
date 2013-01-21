@@ -1,6 +1,8 @@
 # ICE Kickstarter
 
-TODO: Write a gem description
+The Kickstarter provides generators and rake tasks to quickly setup or enhance an [Infopark
+Cloud Express](http://infopark.de/infopark-cloud-express) Ruby on Rails project. All generated code
+represents a working example, but can be fully customized within the application.
 
 ## Installation
 
@@ -18,11 +20,85 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To generate the basic code and CMS structure:
+
+    $ rails generator cms:kickstart
+
+## Generators
+
+To get an overview of all provided generators:
+
+    $ rails generate
+
+To create a new CMS attribute:
+
+    $ rails generate cms:attribute
+
+To create a new CMS object class:
+
+    $ rails generate cms:model
+
+To create a new controller and index view based on a CMS object class:
+
+    $ rails generate cms:controller
+
+The two above generators (cms:model and cms:controller) can be combined in one generator:
+
+    $ rails generate cms:scaffold
+
+## Rake Tasks
+
+To get an overview of all provided rake tasks:
+
+    $ rake -T cms
+
+To run all cms migrations:
+
+    $ rake cms:migrate
+
+The command only processes new, not yet released cms migrations that are placed in the
+```cms/migrate``` directory. Migrations are ordered by their version number.
+
+To publish all processed migrations:
+
+    $ rake cms:migration:publish
+
+To delete all migrations that are not published (deletes the ```rtc workspace```):
+
+    $ rake cms:migration:abort
+
+To deploy the ```origin/master``` branch to the live servers:
+
+    $ rake cms:deploy:live
+
+To get deployment status for last deployment (or given deployment id):
+
+    $ rake cms:deploy:status[id]
+
+To list github users allowed to access the project repository:
+
+    $ rake cms:github:list
+
+To show access information for github user:
+
+    $ rake cms:github:show[username]
+
+To add github user with ```pull``` (read-only, default) or ```push``` (read and write) permission:
+
+    $ rake cms:github:add[username,permission]
+
+To change access permission of github user to ```pull``` (read-only) or ```push``` (read and write):
+
+    $ rake cms:github:change[username,permission]
+
+To disallow github user to access the project repository:
+
+    $ rake cms:github:remove[username]
 
 ## Changelog
 
-TODO: Insert link to CHANGELOG.md
+See [Changelog](https://github.com/infopark/ice_kickstarter/blob/master/CHANGELOG.md) for more
+details.
 
 ## Contributing
 

@@ -11,7 +11,7 @@ module IceKickstarter
       def initialize
         namespace :cms do
           namespace :deploy do
-            desc 'Deploys to live cloud'
+            desc 'Deploys the origin/master branch to the live servers'
             task :live do
               live
             end

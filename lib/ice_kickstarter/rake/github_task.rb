@@ -11,7 +11,7 @@ module IceKickstarter
       def initialize
         namespace :cms do
           namespace :github do
-            desc 'List github users allowed to access the repository'
+            desc 'List github users allowed to access the project repository'
             task :list do
               params = [
                 "token=#{api_key}",
@@ -62,7 +62,7 @@ module IceKickstarter
               puts
             end
 
-            desc 'Disallow github user to access the repository'
+            desc 'Disallow github user to access the project repository'
             task :remove, [:username] do |_, args|
               validate_username(args)
 
