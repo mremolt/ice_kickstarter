@@ -1,1 +1,5 @@
-# kickstart USAGE
+Description:
+    Generates basic code examples and creates the necessary CMS structure.
+
+Example:
+    `rails generate cms:kickstart`

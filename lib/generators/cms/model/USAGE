@@ -1,1 +1,10 @@
-This generator creates an initializer file at config/initializers
+Description:
+    Creates a CMS migration for a new CMS object class. Pass an optional list of attribute names
+    that the CMS object class should have.
+
+Example:
+    `rails generate cms:model News show_in_navigation max_results`
+
+    Migration: cms/migrate/123456_create_news.rb
+    Model: app/models/news.rb
+    Test: spec/models/news_spec.rb

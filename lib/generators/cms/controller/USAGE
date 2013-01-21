@@ -1,0 +1,8 @@
+Description:
+    Creates a CMS migration for a new CMS object class based controller and index view.
+
+Example:
+    `rails generate cms:controller News`
+
+    Controller: app/controllers/news_controller.rb
+    Views: app/views/news/index.html.haml
