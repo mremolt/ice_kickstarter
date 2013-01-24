@@ -1,2 +1,2 @@
-class <%= class_name %> < Obj
+class <%= class_name %> < ::RailsConnector::Obj
 end

@@ -78,10 +78,9 @@ class ApplicationController < ActionController::Base
 
   def not_found
     @obj = Homepage.homepage_for_hostname(request.host).error_404_page.destination_objects.first
-    Rails.logger.info "ErrorPage: #{@obj.path}"
 
     respond_to do |type|
-      type.html { render :template => 'errors/index', :status => 404 }
+      type.html { render :template => 'error_page/index', :status => 404 }
       type.all  { render :nothing => true, :status => 404 }
     end
 

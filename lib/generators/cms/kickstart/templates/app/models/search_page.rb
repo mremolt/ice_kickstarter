@@ -1,3 +1,3 @@
-class SearchPage < Obj
+class SearchPage < ::RailsConnector::Obj
   include Page
 end

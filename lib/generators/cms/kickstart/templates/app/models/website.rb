@@ -1,4 +1,4 @@
-class Website < Obj
+class Website < ::RailsConnector::Obj
   def homepage
     self.class.default_homepage
   end

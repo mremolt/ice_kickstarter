@@ -1,4 +1,4 @@
-class Homepage < Obj
+class Homepage < ::RailsConnector::Obj
   include Page
 
   # TODO edit mapping from hostnames to homepages
@@ -35,14 +35,5 @@ class Homepage < Obj
 
   def main_nav_item
     nil
-  end
-
-  def get_object(named_link_name)
-    link = related_links.detect {|link| link.title == named_link_name}
-    obj = link && link.destination_object
-    unless obj
-      raise "Named Object #{named_link_name} not found for Homepage #{path}"
-    end
-    obj
   end
 end

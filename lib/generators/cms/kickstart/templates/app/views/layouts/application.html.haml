@@ -53,7 +53,8 @@
                   = link_to('/path3') do
                     Link 3
 
-      .footer
+    .container
+      = render_cell(:footer, :show)
 
     = rails_connector_after_content_tags
 

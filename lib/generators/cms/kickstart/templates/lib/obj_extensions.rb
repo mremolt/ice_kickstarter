@@ -1,5 +1,4 @@
 module ObjExtensions
-
   # Infopark Rails Connector enables the developer to define specific behavior for Fiona CMS
   # classes by using Single Table Inheritance (http://www.martinfowler.com/eaaCatalog/singleTableInheritance.html).
   #
@@ -11,11 +10,10 @@ module ObjExtensions
   def self.enable
     return if Obj.respond_to? :obj_extensions_enabled
 
-    require "lib/page"
-    require "lib/box"
+    require './lib/page'
+    require './lib/box'
 
     Obj.class_eval do
-
       def self.obj_extensions_enabled
       end
 
@@ -43,17 +41,14 @@ module ObjExtensions
       end
 
       def sorted_toclist
-        toclist.sort_by {|obj| obj[:sort_key].to_s}
-      end
-
-      def related_links
-        self[:related_links] || []
+        toclist.sort_by { |obj| obj[:sort_key].to_s }
       end
 
       def boxes
         boxes_dir = Obj.find_by_path(path + '/_boxes')
+
         if boxes_dir.present?
-          boxes_dir.sorted_toclist.select { |c| Box === c }
+          boxes_dir.sorted_toclist.select { |box| Box === box }
         else
           []
         end
@@ -71,7 +66,7 @@ module ObjExtensions
       end
 
       def show_in_navigation?
-        self[:show_in_navigation] != 'Yes'
+        self[:show_in_navigation] == 'Yes'
       end
 
       def language

@@ -1,7 +1,7 @@
 module Box
-
   def page
-    parent.page if parent
+    if parent
+      parent.page
+    end
   end
-
 end

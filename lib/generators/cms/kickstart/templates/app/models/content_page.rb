@@ -1,3 +1,3 @@
-class ContentPage < Obj
+class ContentPage < ::RailsConnector::Obj
   include Page
 end

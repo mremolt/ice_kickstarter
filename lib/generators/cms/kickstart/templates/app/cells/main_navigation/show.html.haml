@@ -13,4 +13,5 @@
               = link_to(cms_path(obj)) do
                 = display_title(obj)
 
-        = render('workspace_toggle') unless session[:live_environment]
+        - unless session[:live_environment]
+          = render_cell(:main_navigation, :workspace_toggle)
