@@ -2,7 +2,7 @@ class BoxCell < Cell::Rails
   helper :application, :cms
 
   build do |page, box|
-    "#{box.class}Cell".constantize
+    "Box::#{box.class}Cell".constantize
   end
 
   def show(page, box)

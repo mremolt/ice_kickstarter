@@ -2,7 +2,7 @@ class CreateStructure < ::RailsConnector::Migrations::Migration
   def up
     delete_obj_by_path('/logo.png')
     delete_obj_by_path('/')
-    update_obj_class('Publication', :is_active => false)
+    #update_obj_class('Publication', :is_active => false)
 
     create_obj(:_path => '/', :_obj_class => 'Root')
     update_obj_class('Root', :is_active => false)
