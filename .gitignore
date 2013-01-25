@@ -1,0 +1,14 @@
+.bundle/
+.yardoc
+config/local.yml
+config/rails_connectory.yml
+config/custom_cloud.yml
+tmp/*
+log/*.log
+pkg/
+doc/*
+spec/tmp/*
+spec/dummy/db/*.sqlite3
+spec/dummy/log/*
+spec/dummy/tmp/
+spec/dummy/.sass-cache

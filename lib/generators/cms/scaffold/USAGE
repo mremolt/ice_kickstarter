@@ -1,0 +1,6 @@
+Description:
+    Scaffolds an entire CMS object class, from model and migration to controller and views, along
+    with a full test suite.
+
+Example:
+    `rails generate cms:scaffold News show_in_navigation max_results`
