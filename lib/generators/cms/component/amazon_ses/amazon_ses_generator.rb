@@ -18,6 +18,8 @@ module Cms
           data = data.join("\n")
 
           environment(data, :env => :production)
+
+          log(:environment, 'production: config.action_mailer.delivery_method = :smtp')
         end
 
         def raise_delivery_errors
@@ -30,6 +32,8 @@ module Cms
           data = data.join("\n")
 
           environment(data, :env => :production)
+
+          log(:environment, 'production: config.action_mailer.raise_delivery_errors = true')
         end
 
         def set_default_url_options
@@ -45,6 +49,8 @@ module Cms
           data = data.join("\n")
 
           environment(data, :env => :test)
+
+          log(:environment, 'test: config.action_mailer.default_url_options')
         end
       end
     end

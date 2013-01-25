@@ -1,4 +1,4 @@
-class Create<%= class_name %>Attribute < ::RailsConnector::Migrations::Migration
+class Create<%= class_name %>Attribute < ::RailsConnector::Migration
   def up
     params = {}
     params[:name] = '<%= file_name %>'

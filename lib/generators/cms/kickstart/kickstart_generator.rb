@@ -50,6 +50,12 @@ module Cms
         generate('rspec:install')
       end
 
+      def create_deploy_hooks
+        create_file('deploy/after_restart.rb')
+        create_file('deploy/before_symlink.rb')
+        empty_directory('deploy/templates')
+      end
+
       def include_and_configure_template_engine
         gem('haml-rails')
 

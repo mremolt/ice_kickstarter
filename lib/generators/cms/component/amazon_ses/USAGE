@@ -1,1 +1,7 @@
-# Amazon SES
+Description:
+    Enables the Rails application to send emails via Amazon Simple Email Service.
+
+Example:
+    `rails generate cms:component:amazon_ses`
+
+    Initializer: config/initializers/amazon_ses.rb
