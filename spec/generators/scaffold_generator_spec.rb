@@ -19,7 +19,7 @@ describe Cms::Generators::ScaffoldGenerator do
       directory 'app' do
         directory 'models' do
           file 'news.rb' do
-            contains 'class News < Obj'
+            contains 'class News < ::RailsConnector::Obj'
           end
         end
       end
