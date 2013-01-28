@@ -17,12 +17,16 @@ module Cms
           insert_into_file(
             "app/views/layouts/application.html.haml",
             :after => "= javascript_include_tag 'application'") do
-              "\n    = render :partial => 'layouts/google_analytics/google_analytics_snippet'"
+              "\n\n    = render_google_analytics(@obj.homepage)"
             end
         end
 
         def create_structure_migration_file
           migration_template('migration.rb', "cms/migrate/create_google_analytics.rb")
+        end
+
+        def create_spec_files
+          template('spec.rb', File.join('spec/models', "google_analytics_spec.rb"))
         end
       end
     end
