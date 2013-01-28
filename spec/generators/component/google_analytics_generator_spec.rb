@@ -15,40 +15,41 @@ describe Cms::Generators::Component::GoogleAnalyticsGenerator do
   end
 
   def prepare_environments
-    environments_path = "#{destination_root}/config/environments"
+    environments_path = "#{destination_root}/app/views/layouts/"
 
     mkdir_p(environments_path)
 
-    File.open("#{environments_path}/production.rb", 'a') { |f| f.write('Test::Application.configure do') }
-    File.open("#{environments_path}/test.rb", 'a') { |f| f.write('Test::Application.configure do') }
+    File.open("#{environments_path}application.html.haml", 'w') { |f| f.write("= javascript_include_tag 'application'") }
   end
 
-  it 'creates initializer file' do
+  it 'creates helper file' do
     destination_root.should have_structure {
-      directory 'config' do
-        directory 'initializers' do
-          file 'amazon_ses.rb'
+      directory 'app' do
+        directory 'helpers' do
+          file 'google_analytics_helper.rb'
         end
       end
     }
+  end
 
+  it 'creates model file' do
     destination_root.should have_structure {
-      directory 'config' do
-        directory 'environments' do
-          file 'production.rb' do
-            contains 'config.action_mailer.raise_delivery_errors = true'
-          end
+      directory 'app' do
+        directory 'models' do
+          file 'google_analytics.rb'
         end
       end
     }
+  end
 
+  it 'creates partial file' do
     destination_root.should have_structure {
-      directory 'config' do
-        directory 'environments' do
-          file 'test.rb' do
-            contains 'config.action_mailer.default_url_options = {'
-            contains ":host => 'localhost',"
-            contains ':port => 3000,'
+      directory 'app' do
+        directory 'views' do
+          directory 'layouts' do
+            directory 'google_analytics' do
+              file '_google_analytics.html.erb'
+            end
           end
         end
       end
