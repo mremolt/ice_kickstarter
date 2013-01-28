@@ -1,1 +1,5 @@
-USAGE
+Description:
+    Enables the Rails application to use google analytics.
+
+Example:
+    `rails generate cms:component:google_analytics`
