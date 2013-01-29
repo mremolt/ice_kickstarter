@@ -37,13 +37,13 @@ module Cms
       end
 
       def include_dev_tools
-        gem_group :test, :development do
+        gem_group(:test, :development) do
           gem('pry-rails', '0.2.2')
         end
       end
 
       def install_test_framework
-        gem_group :test, :development do
+        gem_group(:test, :development) do
           gem('rspec-rails')
         end
 
@@ -67,7 +67,7 @@ module Cms
       end
 
       def install_twitter_bootstrap
-        gem_group :assets do
+        gem_group(:assets) do
           gem('less-rails-bootstrap', '2.2.1')
         end
       end
@@ -137,7 +137,7 @@ module Cms
       end
 
       def extend_gitignore
-        append_file '.gitignore', 'config/deploy.yml'
+        append_file('.gitignore', 'config/deploy.yml')
       end
 
       def create_box_model
