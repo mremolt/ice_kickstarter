@@ -140,6 +140,13 @@ To disallow github user to access the project repository:
 
     $ rake cms:github:remove[username]
 
+## Developer Dashboard
+
+A developer dashboard is available under "/cms/dashboard". It is only available for local requests.
+The dashboard provides an overview of the current status of the application, the CMS and CRM. It
+lists involved people, CMS and CRM statistics, latest core gem versions and object classes and their
+attributes.
+
 ## Changelog
 
 See [Changelog](https://github.com/infopark/ice_kickstarter/blob/master/CHANGELOG.md) for more
