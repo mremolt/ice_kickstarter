@@ -10,12 +10,12 @@ module IceKickstarter
 
       def initialize
         namespace :cms do
-          namespace :deploy do
-            desc 'Deploys the origin/master branch to the live servers'
-            task :live do
-              live
-            end
+          desc 'Deploys the origin/master branch to the live servers'
+          task :deploy do
+            deploy
+          end
 
+          namespace :deploy do
             desc 'Get deployment status for last deployment or given deployment id'
             task :status, [:id] do |_, args|
               args.with_defaults(:id => 'current')
@@ -34,7 +34,7 @@ module IceKickstarter
         puts
       end
 
-      def live
+      def deploy
         sh 'git fetch', :verbose => true
 
         if %x(git rev-parse origin/master).strip == %x(git rev-parse origin/deploy).strip
