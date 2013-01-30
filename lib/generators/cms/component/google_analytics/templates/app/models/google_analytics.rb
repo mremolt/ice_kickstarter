@@ -1,4 +1,4 @@
-class GoogleAnalytics < ::RailsConnector::Obj
+class GoogleAnalytics < Obj
   def anonymize_ip?
     self[:google_analytics_anonymize_ip] == 'Yes'
   end

@@ -1,3 +1,3 @@
-class BoxImage < ::RailsConnector::Obj
+class BoxImage < Obj
   include Box
 end

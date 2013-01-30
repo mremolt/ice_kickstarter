@@ -114,7 +114,7 @@ To delete all migrations that are not published (deletes the ```rtc workspace```
 
 To deploy the ```origin/master``` branch to the live servers:
 
-    $ rake cms:deploy:live
+    $ rake cms:deploy
 
 To get deployment status for last deployment (or given deployment id):
 

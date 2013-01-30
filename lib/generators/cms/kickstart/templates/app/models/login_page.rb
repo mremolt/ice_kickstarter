@@ -1,3 +1,3 @@
-class LoginPage < ::RailsConnector::Obj
+class LoginPage < Obj
   include Page
 end

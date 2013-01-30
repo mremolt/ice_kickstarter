@@ -1,4 +1,4 @@
-class Homepage < ::RailsConnector::Obj
+class Homepage < Obj
   include Page
 
   # TODO edit mapping from hostnames to homepages

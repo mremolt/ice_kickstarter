@@ -4,5 +4,5 @@ source :rubygems
 gemspec
 
 gem 'haml-rails'
-gem 'infopark_rails_connector'
-gem 'infopark_cloud_connector'
+gem 'infopark_rails_connector', '>= 6.8.2.7.128454143'
+gem 'infopark_cloud_connector', '>= 6.8.2.7.128454143'
