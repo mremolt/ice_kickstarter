@@ -7,6 +7,7 @@ describe Cms::Generators::Component::GoogleAnalyticsGenerator do
   include GeneratorSpec::TestCase
 
   destination File.expand_path('../../../../tmp', __FILE__)
+  arguments ['--anonymize_ip_default=Yes', '--tracking_id_default=1234']
 
   before do
     prepare_destination
@@ -22,11 +23,15 @@ describe Cms::Generators::Component::GoogleAnalyticsGenerator do
     File.open("#{environments_path}application.html.haml", 'w') { |f| f.write("= javascript_include_tag 'application'") }
   end
 
-  it 'creates helper file' do
+  it 'creates view' do
     destination_root.should have_structure {
       directory 'app' do
-        directory 'helpers' do
-          file 'google_analytics_helper.rb'
+        directory 'cells' do
+          file 'google_analytics_cell.rb'
+
+          directory 'google_analytics' do
+            file 'show.html.erb'
+          end
         end
       end
     }
@@ -42,14 +47,23 @@ describe Cms::Generators::Component::GoogleAnalyticsGenerator do
     }
   end
 
-  it 'creates partial file' do
+  it 'creates test file' do
     destination_root.should have_structure {
-      directory 'app' do
-        directory 'views' do
-          directory 'layouts' do
-            directory 'google_analytics' do
-              file '_google_analytics.html.erb'
-            end
+      directory 'spec' do
+        directory 'models' do
+          file 'google_analytics_spec.rb'
+        end
+      end
+    }
+  end
+
+  it 'creates migration file' do
+    destination_root.should have_structure {
+      directory 'cms' do
+        directory 'migrate' do
+          migration 'create_google_analytics' do
+            contains "'google_analytics_anonymize_ip' => 'Yes'"
+            contains "'google_analytics_tracking_id' => '1234'"
           end
         end
       end

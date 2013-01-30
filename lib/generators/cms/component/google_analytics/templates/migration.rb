@@ -1,9 +1,10 @@
 class CreateGoogleAnalytics < ::RailsConnector::Migrations::Migration
   def up
-    create_google_analytics_obj_class
+    create_attributes_and_obj_class
     create_objs
-    update_hompage
-    connect_hompage_obj_with_configuration
+    deactivate_obj_class
+    add_hompage_attribute
+    connect_hompages_with_configuration
   end
 
   private
@@ -16,7 +17,7 @@ class CreateGoogleAnalytics < ::RailsConnector::Migrations::Migration
     "#{homepage.path}/_configuration/google_analytics"
   end
 
-  def create_google_analytics_obj_class
+  def create_attributes_and_obj_class
     create_attribute(
       :name => 'google_analytics_tracking_id',
       :title => 'Tracking ID',
@@ -38,6 +39,10 @@ class CreateGoogleAnalytics < ::RailsConnector::Migrations::Migration
         'google_analytics_tracking_id',
         'google_analytics_anonymize_ip',
       ],
+      :preset_attributes => {
+        'google_analytics_anonymize_ip' => '<%= anonymize_ip_default %>',
+        'google_analytics_tracking_id' => '<%= tracking_id_default %>',
+      },
     }
 
     create_obj_class(params)
@@ -49,11 +54,19 @@ class CreateGoogleAnalytics < ::RailsConnector::Migrations::Migration
 
   def create_objs
     homepages.each do |homepage|
-      create_obj(:_path => obj_path_for_homepage(homepage), :_obj_class => class_name)
+      create_obj(
+        :_path => obj_path_for_homepage(homepage),
+        :_obj_class => class_name,
+        :title => 'Google Analytics'
+      )
     end
   end
 
-  def update_hompage
+  def deactivate_obj_class
+    update_obj_class(class_name, :is_active => false)
+  end
+
+  def add_hompage_attribute
     create_attribute(
       :name => attribute_name,
       :title => 'Google Analytics',
@@ -70,7 +83,7 @@ class CreateGoogleAnalytics < ::RailsConnector::Migrations::Migration
     'google_analytics'
   end
 
-  def connect_hompage_obj_with_configuration
+  def connect_hompages_with_configuration
     homepages.each do |homepage|
       path = obj_path_for_homepage(homepage)
       obj = Obj.find_by_path(path)

@@ -87,7 +87,7 @@ The two above generators (cms:model and cms:controller) can be combined in one g
 
     $ rails generate cms:scaffold
 
-To add the google analytics functionality to the app
+To add the google analytics functionality to the app:
 
     $ rails generate cms:component:google_analytics
 

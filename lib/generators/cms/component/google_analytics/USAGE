@@ -1,5 +1,8 @@
 Description:
-    Enables the Rails application to use google analytics.
+    Enables the Rails application to use google analytics. By default, the
+    tracking id is not set and anonymize ip is turned off.
 
 Example:
     `rails generate cms:component:google_analytics`
+
+    CMS: <path to homepage>/_configuration/google_analytics
