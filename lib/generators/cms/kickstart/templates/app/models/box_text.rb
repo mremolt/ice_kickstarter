@@ -1,3 +1,3 @@
-class BoxText < ::RailsConnector::Obj
+class BoxText < Obj
   include Box
 end

@@ -1,4 +1,4 @@
-class ErrorPage < ::RailsConnector::Obj
+class ErrorPage < Obj
   include Page
 
   def show_in_navigation?

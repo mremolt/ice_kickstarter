@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe GoogleAnalytics do
-  it 'inherits from RailsConnector::Obj' do
-    subject.should be_a(RailsConnector::Obj)
+  it 'inherits from Obj' do
+    subject.should be_a(Obj)
   end
 
   describe 'anonymize_ip' do

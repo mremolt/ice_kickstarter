@@ -19,7 +19,7 @@ describe Cms::Generators::ModelGenerator do
       directory 'app' do
         directory 'models' do
           file 'news.rb' do
-            contains 'class News < ::RailsConnector::Obj'
+            contains 'class News < Obj'
           end
         end
       end
