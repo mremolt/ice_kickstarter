@@ -25,4 +25,14 @@ describe Cms::Generators::ModelGenerator do
       end
     }
   end
+
+  it 'creates migration file' do
+    destination_root.should have_structure {
+      directory 'cms' do
+        directory 'migrate' do
+          migration 'create_news'
+        end
+      end
+    }
+  end
 end
