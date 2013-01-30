@@ -13,7 +13,7 @@
 
     / HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
-      = javascript_include_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js'
+      = javascript_include_tag('http://html5shim.googlecode.com/svn/trunk/html5.js')
 
     = stylesheet_link_tag('application', :media => 'all')
 
@@ -26,7 +26,7 @@
       .content
         .row
           .span9
-            = render 'layouts/flash_messages'
+            = render('layouts/flash_messages')
 
             = yield
 
@@ -58,6 +58,6 @@
 
     = rails_connector_after_content_tags
 
-    = javascript_include_tag 'application'
+    = javascript_include_tag('application')
 
     = render_cell(:main_navigation, :highlight, @obj)
