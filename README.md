@@ -23,7 +23,7 @@ Or install it yourself as:
 To generate the basic code and CMS structure:
 
     $ rails generate cms:kickstart
-    
+
 ## CMS Structure
 
 When the ```cms:kickstart``` generator is finished the following CMS hierarchy is created:
@@ -40,7 +40,7 @@ When the ```cms:kickstart``` generator is finished the following CMS hierarchy i
         |- audio
         |- images
         |- pdfs
-        
+
 Together with the CMS hierarchy, some CMS object classes and attributes are created as well:
 
 ### Attributes ###
@@ -86,6 +86,10 @@ To create a new controller and index view based on a CMS object class:
 The two above generators (cms:model and cms:controller) can be combined in one generator:
 
     $ rails generate cms:scaffold
+
+To add the google analytics functionality to the app:
+
+    $ rails generate cms:component:google_analytics
 
 ## Rake Tasks
 
