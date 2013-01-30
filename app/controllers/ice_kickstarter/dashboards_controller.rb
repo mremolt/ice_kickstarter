@@ -2,7 +2,7 @@ module IceKickstarter
   class DashboardsController < ApplicationController
     layout 'ice_kickstarter/dashboard'
 
-    before_filter :require_local!, :only => [:info]
+    before_filter :require_local!
 
     def show
       @meta_stats = Dashboard::MetaStats.new
