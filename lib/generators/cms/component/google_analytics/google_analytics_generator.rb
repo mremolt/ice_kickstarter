@@ -40,14 +40,31 @@ module Cms
         end
 
         def create_migration
+          validate_obj_class(class_name)
+          validate_attribute(tracking_id_attribute_name)
+          validate_attribute(anonymize_ip_attribute_name)
+
           migration_template('migration.rb', 'cms/migrate/create_google_analytics.rb')
 
           if behavior == :invoke
             log(:migration, 'Make sure to run "rake cms:migrate" to apply CMS changes and set a Tracking ID.')
           end
+        rescue DuplicateCmsResourceError
         end
 
         private
+
+        def class_name
+          'GoogleAnalytics'
+        end
+
+        def tracking_id_attribute_name
+          'google_analytics_tracking_id'
+        end
+
+        def anonymize_ip_attribute_name
+          'google_analytics_anonymize_ip'
+        end
 
         def anonymize_ip_default
           options[:anonymize_ip_default]

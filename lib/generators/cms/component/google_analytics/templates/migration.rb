@@ -10,7 +10,7 @@ class CreateGoogleAnalytics < ::RailsConnector::Migrations::Migration
   private
 
   def class_name
-    'GoogleAnalytics'
+    '<%= class_name %>'
   end
 
   def obj_path_for_homepage(homepage)
@@ -19,13 +19,13 @@ class CreateGoogleAnalytics < ::RailsConnector::Migrations::Migration
 
   def create_attributes_and_obj_class
     create_attribute(
-      :name => 'google_analytics_tracking_id',
+      :name => '<%= tracking_id_attribute_name %>',
       :title => 'Tracking ID',
       :type => :string
     )
 
     create_attribute(
-      :name => 'google_analytics_anonymize_ip',
+      :name => '<%= anonymize_ip_attribute_name %>',
       :title => 'Anonymize IP?',
       :type => :enum,
       :values => ['Yes', 'No']
@@ -36,12 +36,12 @@ class CreateGoogleAnalytics < ::RailsConnector::Migrations::Migration
       :type => :publication,
       :title => 'Google Analytics',
       :attributes => [
-        'google_analytics_tracking_id',
-        'google_analytics_anonymize_ip',
+        '<%= tracking_id_attribute_name %>',
+        '<%= anonymize_ip_attribute_name %>',
       ],
       :preset_attributes => {
-        'google_analytics_anonymize_ip' => '<%= anonymize_ip_default %>',
-        'google_analytics_tracking_id' => '<%= tracking_id_default %>',
+        '<%= tracking_id_attribute_name %>' => '<%= tracking_id_default %>',
+        '<%= anonymize_ip_attribute_name %>' => '<%= anonymize_ip_default %>',
       },
     }
 
