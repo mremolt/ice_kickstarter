@@ -1,5 +1,10 @@
 class Create<%= class_name %> < ::RailsConnector::Migration
   def up
-    create_obj_class(:name => '<%= class_name %>', :type => '<%= type %>', :title => '<%= title %>', :attributes => <%= attributes %>)
+    create_obj_class(
+      :name => '<%= class_name %>',
+      :type => '<%= type %>',
+      :title => '<%= title %>',
+      :attributes => <%= attributes %>
+    )
   end
 end

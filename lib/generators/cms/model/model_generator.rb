@@ -28,7 +28,10 @@ module Cms
       end
 
       def create_migration_file
+        validate_obj_class(class_name)
+
         migration_template('migration.rb', "cms/migrate/create_#{file_name}.rb")
+      rescue DuplicateResourceError
       end
 
       def create_spec_files

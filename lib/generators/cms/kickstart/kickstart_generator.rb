@@ -101,29 +101,27 @@ module Cms
       end
 
       def create_structure_migration_file
-        # Keep Rails::Generators Namespace, otherwise generators cannot be called
-        # multiple times.
         Rails::Generators.invoke('cms:attribute', ['show_in_navigation', '--type=enum', '--values=Yes', 'No'])
-
         Rails::Generators.invoke('cms:attribute', ['error_404_page', '--type=linklist'])
         Rails::Generators.invoke('cms:attribute', ['login_page', '--type=linklist'])
         Rails::Generators.invoke('cms:attribute', ['search_page', '--type=linklist'])
         Rails::Generators.invoke('cms:attribute', ['locale', '--type=string'])
         Rails::Generators.invoke('cms:scaffold', ['Homepage', '--title=Page: Homepage', '--attributes=error_404_page', 'login_page', 'search_page', 'locale', 'show_in_navigation'])
 
-        Rails::Generators.invoke('cms:model', ['Root', '--attributes=show_in_navigation'])
-        Rails::Generators.invoke('cms:model', ['Website', '--attributes=show_in_navigation'])
+        Rails::Generators.invoke('cms:model', ['Root'])
+        Rails::Generators.invoke('cms:model', ['Website'])
         Rails::Generators.invoke('cms:model', ['Container', '--attributes=show_in_navigation'])
-        Rails::Generators.invoke('cms:scaffold', ['ContentPage', '--title=Page: Content', '--attributes=show_in_navigation'])
+
+        Rails::Generators.invoke('cms:attribute', ['sort_key', '--type=string'])
+        Rails::Generators.invoke('cms:scaffold', ['ContentPage', '--title=Page: Content', '--attributes=show_in_navigation', 'sort_key'])
         Rails::Generators.invoke('cms:scaffold', ['ErrorPage', '--title=Page: Error', '--attributes=show_in_navigation'])
         Rails::Generators.invoke('cms:scaffold', ['LoginPage', '--title=Page: Login', '--attributes=show_in_navigation'])
         Rails::Generators.invoke('cms:scaffold', ['SearchPage', '--title=Page: Search', '--attributes=show_in_navigation'])
 
         Rails::Generators.invoke('cms:attribute', ['source', '--type=linklist'])
         Rails::Generators.invoke('cms:attribute', ['caption', '--type=string'])
-        Rails::Generators.invoke('cms:attribute', ['sort_key', '--type=string'])
-        Rails::Generators.invoke('cms:model', ['BoxText', '--title=Box: Text', '--attributes=sort_key', 'show_in_navigation'])
-        Rails::Generators.invoke('cms:model', ['BoxImage', '--title=Box: Image', '--attributes=source', 'caption', 'sort_key', 'show_in_navigation'])
+        Rails::Generators.invoke('cms:model', ['BoxText', '--title=Box: Text', '--attributes=sort_key'])
+        Rails::Generators.invoke('cms:model', ['BoxImage', '--title=Box: Image', '--attributes=source', 'caption', 'sort_key'])
 
         migration_template('create_structure.rb', 'cms/migrate/create_structure.rb')
 

@@ -20,9 +20,38 @@ Or install it yourself as:
 
 ## Usage
 
+The ICE Kickstarter assumes you have a fresh ICE project with an almost empty CMS tenant. If you
+should have other content already, the provided examples may not work correctly.
+
 To generate the basic code and CMS structure:
 
     $ rails generate cms:kickstart
+
+After you enriched your application you should take a look at the CMS migrations under
+```cms/migrate``` in order to have a basic understanding of what will be created in the CMS. You
+could for example change the name of the website object or adopt some titles.
+
+Once you have an overview, of what structure will be created, you can look at the generated code. A
+good place to start is the ```choose_homepage``` callback in
+```config/initializers/rails_connector.rb```. You can get a list of all changes with the help of
+git:
+
+    $ git status
+
+This will list all files that were changed since your last commit. This allows you to also see
+exactly what kind of changes have been made. It is also possible to easily revert all changes.
+
+Finally, if you are pleased with the result of the ICE Kickstarter you can run:
+
+    $ rake cms:migrate
+
+to apply all new migrations to the CMS. After all migrations are processed you can visit the CMS and
+look at the newly created workspace or start your local Ruby on Rails application
+
+    $ rails server
+
+and visit ```http://localhost:3000?ws=rtc``` to see the changes made in the migration workspace. You
+have to provide the workspace, because the contents are not published yet.
 
 ## CMS Structure
 
@@ -30,10 +59,14 @@ When the ```cms:kickstart``` generator is finished the following CMS hierarchy i
 
     |- website
     |    |- homepage
-    |        |- _meta
-    |            |- error_page
-    |            |- login_page
-    |            |- search_page
+    |        |- beispiel
+    |        |- _configuration
+    |            |- error_404
+    |            |- login
+    |            |- search
+    |        |- _boxes
+    |            |- box_text
+    |            |- box_image
     |
     |- resources
         |- videos
@@ -48,6 +81,7 @@ Together with the CMS hierarchy, some CMS object classes and attributes are crea
 * show_in_navigation:enum (Yes No)
 * error_404_page:linklist
 * search_page:linklist
+* login_page:linklist
 * locale:string
 * source:linklist
 * caption:string
@@ -58,6 +92,7 @@ Together with the CMS hierarchy, some CMS object classes and attributes are crea
 * Root
 * Homepage
 * Website
+* Container
 * ContentPage
 * ErrorPage
 * LoginPage

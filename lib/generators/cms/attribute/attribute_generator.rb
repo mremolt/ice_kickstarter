@@ -20,7 +20,10 @@ module Cms
         :desc => 'Possible values for attributes of type (enum | multienum).'
 
       def create_migration_file
+        validate_attribute(file_name)
+
         migration_template('migration.rb', "cms/migrate/create_#{file_name}_attribute.rb")
+      rescue DuplicateResourceError
       end
 
       private
