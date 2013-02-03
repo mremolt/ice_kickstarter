@@ -49,7 +49,7 @@ module Cms
           if behavior == :invoke
             log(:migration, 'Make sure to run "rake cms:migrate" to apply CMS changes and set a Tracking ID.')
           end
-        rescue DuplicateCmsResourceError
+        rescue DuplicateResourceError
         end
 
         private
