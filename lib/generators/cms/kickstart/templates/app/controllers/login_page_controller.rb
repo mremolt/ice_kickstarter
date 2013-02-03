@@ -2,7 +2,9 @@ class LoginPageController < CmsController
   include RailsConnector::Crm::Localizable
 
   def index
-    if request.post?
+    @user_presenter = UserPresenter.new(params[:user_presenter])
+
+    if request.post? && @user_presenter.valid?
       login
     elsif request.delete?
       logout
@@ -12,21 +14,20 @@ class LoginPageController < CmsController
   private
 
   def login
-    params[:user] ||= {}
+    self.current_user = @user_presenter.authenticate
 
-    user = Infopark::Crm::Contact.authenticate(params[:user][:login], params[:user][:password])
-    cache_current_user(user)
+    if current_user.logged_in?
+      target = params[:return_to] || cms_path(@obj.redirect_after_login)
 
-    target = params[:return_to].presence || cms_path(@obj.homepage)
-
-    redirect_to(target, :notice => t('login_page.login.notice'))
-  rescue Infopark::Crm::Errors::AuthenticationFailed, ActiveResource::UnauthorizedAccess
-    flash.now[:alert] = t('login_page.login.alert')
+      redirect_to(target, :notice => t(:'flash.login.success'))
+    end
   end
 
   def logout
-    discard_current_user
+    discard_user
 
-    redirect_to({ :action => 'index' }, :notice => t('login_page.logout.notice'))
+    target = cms_path(@obj.redirect_after_logout)
+
+    redirect_to(target, :notice => t(:'flash.logout.success'))
   end
 end

@@ -36,9 +36,20 @@ module Cms
         end
       end
 
+      def form_tools
+        gem('active_attr', '0.7.0')
+        gem('simple_form', '2.0.4')
+
+        generate('simple_form:install --bootstrap --template-engine=haml')
+
+        remove_file('config/locales/simple_form.de.yml')
+        remove_dir('lib/templates')
+      end
+
       def include_dev_tools
         gem_group(:test, :development) do
           gem('pry-rails', '0.2.2')
+          gem('rails-footnotes', '3.7.9')
         end
       end
 
@@ -62,7 +73,7 @@ module Cms
         application_erb_file = 'app/views/layouts/application.html.erb'
 
         if File.exist?(application_erb_file)
-          remove_file application_erb_file
+          remove_file(application_erb_file)
         end
       end
 
@@ -89,6 +100,8 @@ module Cms
           "config.i18n.default_locale = :de"
         )
 
+        remove_file('config/locales/en.yml')
+
         puts "set default language to 'de'"
       end
 
@@ -101,25 +114,28 @@ module Cms
       end
 
       def create_structure_migration_file
-        Rails::Generators.invoke('cms:attribute', ['show_in_navigation', '--type=enum', '--values=Yes', 'No'])
-        Rails::Generators.invoke('cms:attribute', ['error_404_page', '--type=linklist'])
-        Rails::Generators.invoke('cms:attribute', ['login_page', '--type=linklist'])
-        Rails::Generators.invoke('cms:attribute', ['search_page', '--type=linklist'])
-        Rails::Generators.invoke('cms:attribute', ['locale', '--type=string'])
-        Rails::Generators.invoke('cms:scaffold', ['Homepage', '--title=Page: Homepage', '--attributes=error_404_page', 'login_page', 'search_page', 'locale', 'show_in_navigation'])
+        Rails::Generators.invoke('cms:attribute', ['show_in_navigation', '--title=Show in Navigation', '--type=enum', '--values=Yes', 'No'])
+        Rails::Generators.invoke('cms:attribute', ['error_404_page_link', '--title=Error 404 Page', '--type=linklist'])
+        Rails::Generators.invoke('cms:attribute', ['login_page_link', '--title=Login Page', '--type=linklist'])
+        Rails::Generators.invoke('cms:attribute', ['search_page_link', '--title=Search Page', '--type=linklist'])
+        Rails::Generators.invoke('cms:attribute', ['locale', '--title=Locale', '--type=string'])
+        Rails::Generators.invoke('cms:scaffold', ['Homepage', '--title=Page: Homepage', '--attributes=error_404_page_link', 'login_page_link', 'search_page_link', 'locale', 'show_in_navigation'])
 
-        Rails::Generators.invoke('cms:model', ['Root'])
-        Rails::Generators.invoke('cms:model', ['Website'])
-        Rails::Generators.invoke('cms:model', ['Container', '--attributes=show_in_navigation'])
+        Rails::Generators.invoke('cms:model', ['Root', '--title=Root'])
+        Rails::Generators.invoke('cms:model', ['Website', '--title=Website'])
+        Rails::Generators.invoke('cms:model', ['Container', '--title=Container', '--attributes=show_in_navigation'])
 
-        Rails::Generators.invoke('cms:attribute', ['sort_key', '--type=string'])
+        Rails::Generators.invoke('cms:attribute', ['sort_key', '--type=string', '--title=Sort Key'])
         Rails::Generators.invoke('cms:scaffold', ['ContentPage', '--title=Page: Content', '--attributes=show_in_navigation', 'sort_key'])
         Rails::Generators.invoke('cms:scaffold', ['ErrorPage', '--title=Page: Error', '--attributes=show_in_navigation'])
-        Rails::Generators.invoke('cms:scaffold', ['LoginPage', '--title=Page: Login', '--attributes=show_in_navigation'])
         Rails::Generators.invoke('cms:scaffold', ['SearchPage', '--title=Page: Search', '--attributes=show_in_navigation'])
 
-        Rails::Generators.invoke('cms:attribute', ['source', '--type=linklist'])
-        Rails::Generators.invoke('cms:attribute', ['caption', '--type=string'])
+        Rails::Generators.invoke('cms:attribute', ['redirect_after_login_link', '--type=linklist', '--title=Login Redirect', '--max-size=1'])
+        Rails::Generators.invoke('cms:attribute', ['redirect_after_logout_link', '--type=linklist', '--title=Logout Redirect', '--max-size=1'])
+        Rails::Generators.invoke('cms:scaffold', ['LoginPage', '--title=Page: Login', '--attributes=show_in_navigation', 'redirect_after_login_link', 'redirect_after_logout_link'])
+
+        Rails::Generators.invoke('cms:attribute', ['source', '--type=linklist', '--title=Source'])
+        Rails::Generators.invoke('cms:attribute', ['caption', '--type=string', '--title=Caption'])
         Rails::Generators.invoke('cms:model', ['BoxText', '--title=Box: Text', '--attributes=sort_key'])
         Rails::Generators.invoke('cms:model', ['BoxImage', '--title=Box: Image', '--attributes=source', 'caption', 'sort_key'])
 

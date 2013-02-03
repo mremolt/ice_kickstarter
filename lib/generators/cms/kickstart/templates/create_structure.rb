@@ -34,16 +34,17 @@ class CreateStructure < ::RailsConnector::Migration
 
     try_create_obj(:_path => configuration_path, :_obj_class => 'Container', :title => '_Configuration')
 
-    try_create_obj(:_path => "#{homepage_path}/beispiel", :_obj_class => 'ContentPage', :title => 'Beispielseite')
+    try_create_obj(:_path => "#{homepage_path}/beispiel", :_obj_class => 'ContentPage', :title => 'Beispielseite', :show_in_navigation => 'Yes')
 
-    try_create_obj(:_path => "#{configuration_path}/error_404", :_obj_class => 'ErrorPage', :title => 'Seite nicht gefunden', :body => 'Leider ist die Seite nicht da.', :show_in_navigation => 'No')
-    try_create_obj(:_path => "#{configuration_path}/login", :_obj_class => 'LoginPage', :title => 'Anmelden')
+    try_create_obj(:_path => "#{configuration_path}/error_404", :_obj_class => 'ErrorPage', :title => 'Die angeforderte Seite konnte nicht gefunden werden.', :body => 'Oops. Da ist wohl etwas nicht am richten Platz. Bitte versuchen Sie es mit Hilfe der Navigation erneut.', :show_in_navigation => 'No')
     try_create_obj(:_path => "#{configuration_path}/search", :_obj_class => 'SearchPage', :title => 'Suche')
+    try_create_obj(:_path => "#{configuration_path}/login", :_obj_class => 'LoginPage', :title => 'Anmelden', :redirect_after_login_link => [{ :url => homepage_path }], :redirect_after_logout_link => [{ :url => homepage_path }])
+
     try_update_obj(
       Obj.find_by_path(homepage_path).id,
-      :error_404_page => [{ :url => "#{configuration_path}/error_404" }],
-      :login_page => [{ :url => "#{configuration_path}/login" }],
-      :search_page => [{ :url => "#{configuration_path}/search" }],
+      :error_404_page_link => [{ :url => "#{configuration_path}/error_404" }],
+      :login_page_link => [{ :url => "#{configuration_path}/login" }],
+      :search_page_link => [{ :url => "#{configuration_path}/search" }],
       :locale => 'de'
     )
 

@@ -4,7 +4,7 @@ class Create<%= class_name %> < ::RailsConnector::Migration
       :name => '<%= class_name %>',
       :type => '<%= type %>',
       :title => '<%= title %>',
-      :attributes => <%= attributes %>
+      :attributes => <%= attributes.inspect %>
     )
   end
 end

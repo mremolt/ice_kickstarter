@@ -4,7 +4,7 @@ class Obj < ::RailsConnector::BasicObj
   end
 
   def self.default_homepage
-    Homepage.homepage_for_hostname('default')
+    Homepage.for_hostname('default')
   end
 
   def homepage
@@ -48,7 +48,7 @@ class Obj < ::RailsConnector::BasicObj
     self[:show_in_navigation] == 'Yes'
   end
 
-  def language
-    homepage.name
+  def locale
+    homepage.locale
   end
 end

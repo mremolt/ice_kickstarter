@@ -41,7 +41,7 @@ module Cms
       private
 
       def attributes
-        options[:attributes].inspect
+        options[:attributes]
       end
 
       def title

@@ -1,5 +1,5 @@
 class BoxCell < Cell::Rails
-  helper :application, :cms
+  helper :cms
 
   build do |page, box|
     "Box::#{box.class}Cell".constantize
@@ -13,6 +13,14 @@ class BoxCell < Cell::Rails
   end
 
   def edit_marker
-    render if session[:edit_marker]
+    if edit_marker?
+      render
+    end
+  end
+
+  private
+
+  def edit_marker?
+    Filters::EnvironmentDetection.preview_environment?
   end
 end
