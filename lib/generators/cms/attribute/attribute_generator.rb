@@ -19,6 +19,21 @@ module Cms
         :default => [],
         :desc => 'Possible values for attributes of type (enum | multienum).'
 
+      class_option :title,
+        :type => :string,
+        :default => '',
+        :desc => 'Title of the CMS attribute.'
+
+      class_option :min_size,
+        :type => :numeric,
+        :default => 0,
+        :desc => 'Minimum number of links in a linklist.'
+
+      class_option :max_size,
+        :type => :numeric,
+        :default => 0,
+        :desc => 'Maximum number of links in a linklist.'
+
       def create_migration_file
         validate_attribute(file_name)
 
@@ -26,7 +41,23 @@ module Cms
       rescue DuplicateResourceError
       end
 
+      def create_attribute_file
+        template("#{type}_attribute.rb", "app/concerns/cms/attributes/#{file_name}.rb")
+      end
+
       private
+
+      def min_size
+        options[:min_size]
+      end
+
+      def max_size
+        options[:max_size]
+      end
+
+      def title
+        options[:title] || human_name
+      end
 
       def type
         options[:type]
