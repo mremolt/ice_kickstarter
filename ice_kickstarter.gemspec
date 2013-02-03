@@ -25,12 +25,13 @@ Gem::Specification.new do |gem|
   gem.files       = Dir['lib/**/*', 'LICENSE', 'Rakefile', 'README.md', 'CHANGELOG.md']
 
   gem.add_dependency 'rails', '~> 3.2.11'
+  gem.add_dependency 'haml-rails'
   gem.add_dependency 'infopark_rails_connector', '>= 6.8.2.7.128454143'
   gem.add_dependency 'infopark_cloud_connector', '>= 6.8.2.7.128454143'
 
   gem.add_development_dependency 'yard'
-  gem.add_development_dependency 'redcarpet'
   gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'redcarpet'
   gem.add_development_dependency 'rspec-rails'
   gem.add_development_dependency 'generator_spec'
 end
