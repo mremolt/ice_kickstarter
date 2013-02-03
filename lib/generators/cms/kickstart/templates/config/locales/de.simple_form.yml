@@ -1,0 +1,31 @@
+de:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # html: '<abbr title="required">*</abbr>'
+
+    error_notification:
+      default_message: 'Bitte überprüfen Sie die unten stehenden Felder:'
+      user_presenter: 'Die Anmeldung ist fehlgeschlagen. Bitte versuchen Sie es erneut.'
+
+    labels:
+      user_presenter:
+        login: 'Benutzername'
+        password: 'Passwort'
+        submit: 'test'
+
+    hints:
+      defaults:
+
+  helpers:
+    submit:
+      user_presenter:
+        create: 'Anmelden'
+
+  errors:
+    messages:
+      blank: 'Die Angabe ist obligatorisch.'
+      invalid_email: 'Eine gültige E-Mail-Adresse ist erforderlich.'

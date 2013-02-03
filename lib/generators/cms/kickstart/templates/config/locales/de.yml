@@ -1,19 +1,12 @@
 de:
-  login: 'Login'
-  logout: 'Logout'
+  login: 'Anmelden'
+  logout: 'Abmelden'
 
-  login_page:
-    label:
-      login: 'Login'
-      password: 'Passwort'
-      submit: 'Anmelden'
-
+  flash:
     login:
-      notice: 'Anmeldung erfolgreich.'
-      alert: 'Anmeldung fehlgeschlagen.'
-
+      success: 'Sie haben sich erfolgreich angemeldet.'
     logout:
-      notice: 'Abmeldung erfolgreich.'
+      success: 'Sie haben sich erfolgreich abgemeldet.'
 
   search:
     specify_query: 'Bitte geben Sie einen Suchbegriff ein.'

@@ -36,9 +36,20 @@ module Cms
         end
       end
 
+      def form_tools
+        gem('active_attr', '0.7.0')
+        gem('simple_form', '2.0.4')
+
+        generate('simple_form:install --bootstrap --template-engine=haml')
+
+        remove_file('config/locales/simple_form.de.yml')
+        remove_dir('lib/templates')
+      end
+
       def include_dev_tools
         gem_group(:test, :development) do
           gem('pry-rails', '0.2.2')
+          gem('rails-footnotes', '3.7.9')
         end
       end
 
@@ -62,7 +73,7 @@ module Cms
         application_erb_file = 'app/views/layouts/application.html.erb'
 
         if File.exist?(application_erb_file)
-          remove_file application_erb_file
+          remove_file(application_erb_file)
         end
       end
 
@@ -88,6 +99,8 @@ module Cms
           "# config.i18n.default_locale = :de",
           "config.i18n.default_locale = :de"
         )
+
+        remove_file('config/locales/en.yml')
 
         puts "set default language to 'de'"
       end

@@ -1,13 +1,15 @@
-= form_for(:user, :html => { :class => 'form' }) do |form|
+%h1
+  = display_field(@obj, :title)
+
+= display_field(@obj, :body)
+
+= simple_form_for(@user_presenter, :url => cms_path(@obj)) do |form|
   = hidden_field_tag(:return_to, params[:return_to])
 
-  %p
-    = form.label(:login, t('login_page.label.login'))
-    = form.text_field(:login)
+  = form.error_notification
 
-  %p
-    = form.label(:password, t('login_page.label.password'))
-    = form.password_field(:password)
+  = form.input(:login)
 
-  %p
-    = form.submit(t('login_page.label.submit'))
+  = form.input(:password)
+
+  = form.button(:submit)
