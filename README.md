@@ -126,6 +126,10 @@ To add the google analytics functionality to the app:
 
     $ rails generate cms:component:google_analytics
 
+To add a contact form functionality to the app:
+
+    $ rails generate cms:component:contact_form
+
 ## Rake Tasks
 
 To get an overview of all provided rake tasks:

@@ -1,0 +1,17 @@
+de:
+  simple_form:
+    labels:
+      contact_page_presenter:
+        email: 'E-Mail-Adresse'
+        subject: 'Betreff'
+        message: 'Nachricht'
+
+  helpers:
+    submit:
+      contact_page_presenter:
+        create: 'Abschicken'
+
+  activemodel:
+    errors:
+      messages:
+        invalid_email: 'Eine gültige E-Mail-Adresse ist erforderlich.'

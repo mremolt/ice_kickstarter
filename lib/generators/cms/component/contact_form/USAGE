@@ -1,0 +1,9 @@
+Description:
+    Creates a contact form that creates an activity in the WebCRM and prefills
+    the form if a user is logged in.
+
+Example:
+    `rails generate cms:component:contact_form`
+
+    CMS: <path to homepage>/_configuration/contact_form
+    CRM: Activity type 'contact-form' with attributes 'email' and 'message'
