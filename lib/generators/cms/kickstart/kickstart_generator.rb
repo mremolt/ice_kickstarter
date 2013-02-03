@@ -90,7 +90,7 @@ module Cms
           "config.time_zone = 'Berlin'"
         )
 
-        puts "set timezone to 'Berlin'"
+        log(:info, "set timezone to 'Berlin'")
       end
 
       def set_default_language
@@ -102,7 +102,7 @@ module Cms
 
         remove_file('config/locales/en.yml')
 
-        puts "set default language to 'de'"
+        log(:info, "set default language to 'de'")
       end
 
       def rails_connector_monkey_patch
