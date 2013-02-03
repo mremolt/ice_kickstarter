@@ -36,6 +36,14 @@ module IceKickstarter
       'https://kb.infopark.de/support'
     end
 
+    def cms_blog_url
+      'https://kb.infopark.de/cms-news'
+    end
+
+    def crm_blog_url
+      'https://kb.infopark.de/webcrm-news'
+    end
+
     def github_repository_url
       "https://github.com/infopark-cloud-express/#{tenant_name}"
     end
