@@ -3,11 +3,19 @@ module IceKickstarter
     class Developer
       class << self
         def all
-          response = JSON.parse(RestClient.get(endpoint))
+          response = fetch(endpoint)
 
           response.map do |attributes|
             new(attributes)
           end
+        end
+
+        private
+
+        def fetch(endpoint)
+          JSON.parse(RestClient.get(endpoint))
+        rescue RestClient::InternalServerError
+          []
         end
 
         def endpoint
