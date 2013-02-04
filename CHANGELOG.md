@@ -1,4 +1,6 @@
 = v0.0.3
+  * Added optional contact_page component that is connected to the WebCRM and prefills email, when
+    user is logged in. Call ```rails generate cms:component:contact_page```.
   * Added ICE Developer Dashboard mounted under ```/cms/dashboard```. The dashboard
     is only available for local requests.
   * Bugfix: Workspace Toggle no longer displays an empty list, when there is only one workspace.

@@ -126,6 +126,10 @@ To add the google analytics functionality to the app:
 
     $ rails generate cms:component:google_analytics
 
+To add a contact page functionality to the app:
+
+    $ rails generate cms:component:contact_page
+
 ## Rake Tasks
 
 To get an overview of all provided rake tasks:
@@ -181,6 +185,23 @@ A developer dashboard is available under "/cms/dashboard". It is only available 
 The dashboard provides an overview of the current status of the application, the CMS and CRM. It
 lists involved people, CMS and CRM statistics, latest core gem versions and object classes and their
 attributes.
+
+## Testing
+
+There are two types of tests. First there are standard rspec tests of the ICE Kickstarter engine.
+You can run these tests by simply calling:
+
+    $ rake spec
+
+There are also integration tests, that can be run by:
+
+    $ rake test:integration
+
+In order to run them successfully, you need to create a ```config/local.yml``` file and put in your
+test tenant data. See [local.yml.template](https://github.com/infopark/ice_kickstarter/blob/master/config/local.yml.template)
+for what is needed exactly. The integration tests create an entire new application execute
+```rails generate cms:kickstart``` and run a few other generators and then execute the tests of the
+newly created application.
 
 ## Changelog
 

@@ -6,6 +6,8 @@ module Cms
         klass = file_name.split('.').first.camelcase
 
         raise new(obj, klass)
+      rescue MissingAttribute => error
+        Rails.logger.info(error.message)
       end
 
       def initialize(obj, attribute)
