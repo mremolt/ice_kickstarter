@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe ContactPageController do
   let(:homepage) { mock_model(Homepage, :permalink => 'homepage') }
+  let(:contact_page) { mock(ContactPage, :locale => 'de', :activity_type => 'contact-test', :redirect_after_submit => homepage) }
 
   before do
-    request.for_cms_object(mock(ContactPage, :locale => 'de', :homepage => homepage, :activity_type => 'contact-test'))
+    request.for_cms_object(contact_page)
 
     controller.stub(:ensure_object_is_active).and_return(true)
     controller.stub(:ensure_object_is_permitted).and_return(true)
@@ -45,13 +46,13 @@ describe ContactPageController do
       let(:attributes) { { 'email' => 'test@test.de', 'subject' => 'test', 'message' => 'test' } }
 
       before do
-        ContactActivityService.should_receive(:new).with(attributes, 'contact-test', anything).and_return(service)
+        ContactActivityService.should_receive(:new).with(attributes, contact_page.activity_type, anything).and_return(service)
       end
 
       it 'redirects to hompage' do
         post :index, { :contact_page_presenter => attributes }
 
-        response.should redirect_to('http://test.host/homepage')
+        response.should redirect_to("http://test.host/#{homepage.permalink}")
       end
 
       it 'sets flash notice' do

@@ -1,4 +1,8 @@
 de:
+  flash:
+    contact_page:
+      success: 'Das Kontaktformular wurde erfolgreich versandt.'
+
   simple_form:
     labels:
       contact_page_presenter:

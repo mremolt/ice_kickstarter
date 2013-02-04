@@ -13,6 +13,10 @@ describe ContactPage do
     subject.should respond_to(:activity_type)
   end
 
+  it 'responds to redirect_after_submit' do
+    subject.should respond_to(:redirect_after_submit)
+  end
+
   it 'should be a Page' do
     subject.should be_a(Page)
   end

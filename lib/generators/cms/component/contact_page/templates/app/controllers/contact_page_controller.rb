@@ -1,10 +1,9 @@
 class ContactPageController < CmsController
   def index
-    attributes = params[:contact_page_presenter] || {}
-    @contact_page_presenter = ContactPagePresenter.new(current_user, attributes)
+    @contact_page_presenter = ContactPagePresenter.new(current_user, params[:contact_page_presenter])
 
     if request.post? && @contact_page_presenter.valid?
-      flash[:notice] = 'Contact form sent successfully.'
+      flash[:notice] = I18n.t('flash.contact_page.success')
 
       ContactActivityService.new(
         @contact_page_presenter.attributes,
@@ -12,7 +11,7 @@ class ContactPageController < CmsController
         current_user
       ).submit
 
-      redirect_to(cms_path(@obj.homepage))
+      redirect_to(cms_path(@obj.redirect_after_submit))
     end
   end
 end

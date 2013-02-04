@@ -24,8 +24,3 @@ de:
     submit:
       user_presenter:
         create: 'Anmelden'
-
-  errors:
-    messages:
-      blank: 'Die Angabe ist obligatorisch.'
-      invalid_email: 'Eine gültige E-Mail-Adresse ist erforderlich.'

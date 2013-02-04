@@ -10,6 +10,8 @@ class ContactPagePresenter
   validates :email, :email => { :message => I18n.t('activemodel.errors.messages.invalid_email') }
 
   def initialize(user, attributes)
+    attributes ||= {}
+
     prefill!(attributes, user)
 
     super(attributes)
