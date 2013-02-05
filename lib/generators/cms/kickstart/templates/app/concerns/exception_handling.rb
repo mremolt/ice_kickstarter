@@ -2,8 +2,10 @@ module ExceptionHandling
   extend ActiveSupport::Concern
 
   included do
-    rescue_from(RailsConnector::ResourceNotFound, :with => :not_found)
-    rescue_from(ActiveResource::ResourceNotFound, :with => :not_found)
+    unless Rails.env.development?
+      rescue_from(RailsConnector::ResourceNotFound, :with => :not_found)
+      rescue_from(ActiveResource::ResourceNotFound, :with => :not_found)
+    end
   end
 
   def not_found
