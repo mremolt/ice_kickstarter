@@ -23,9 +23,11 @@ class User
     attributes.slice('id', 'login', 'role_names')
   end
 
-  private
-
   def crm_contact
     @crm_contact ||= Infopark::Crm::Contact.find(id)
+  end
+
+  def crm_attributes
+    crm_contact.attributes
   end
 end
