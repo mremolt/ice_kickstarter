@@ -86,6 +86,10 @@ module Cms
         rescue DuplicateResourceError
         end
 
+        def cms_migrate
+          run('rake cms:migrate')
+        end
+
         private
 
         def homepage_path
