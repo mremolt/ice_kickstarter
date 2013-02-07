@@ -40,7 +40,7 @@
 
   = form.input(:region)
 
-  = form.input(:country)
+  = form.input(:country, :alias_method => :localized_country_select)
 
   %div.row
     %div.span2
