@@ -43,3 +43,13 @@ de:
         want_phonecall: 'per Telefon'
         want_snailmail: 'per Post'
         submit: 'Speichern'
+
+    options:
+      profile_page_presenter:
+        language:
+          de: 'Deutsch'
+          en: 'Englisch'
+
+        gender:
+          M: 'männlich'
+          F: 'weiblich'

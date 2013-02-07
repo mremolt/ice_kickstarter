@@ -3,7 +3,7 @@
 
 = display_field(@obj, :body)
 
-= simple_form_for(@profile_page_presenter, :url => cms_path(@obj)) do |form|
+= simple_form_for(@profile_page_presenter, :url => cms_path(@obj), :html => {:class => 'form-horizontal' }) do |form|
   = form.error_notification
 
   = form.input(:name_prefix)
@@ -12,9 +12,9 @@
 
   = form.input(:last_name)
 
-  = form.input(:language)
+  = form.input(:language, :as => :select, :collection => [:de, :en])
 
-  = form.input(:gender)
+  = form.input(:gender, :as => :select, :collection => [:M, :F])
 
   = form.input(:org_name_address)
 
