@@ -1,0 +1,45 @@
+en:
+  flash:
+    profile_page:
+      success: 'Your changes have been saved!'
+
+  helpers:
+    submit:
+      contact_page_presenter:
+        create: 'Submit'
+
+  activemodel:
+    errors:
+      messages:
+        invalid_email: 'A valid email address is required.'
+
+  simple_form:
+    labels:
+      profile_page_presenter:
+        account_id: 'account ID'
+        country: 'country'
+        email: 'email'
+        extended_address: 'extended address'
+        fax: 'fax'
+        first_name: 'first name'
+        gender: 'gender'
+        job_title: 'position'
+        language: 'language'
+        last_name: 'last name'
+        locality: 'city'
+        login: 'username'
+        mobile_phone: 'cell phone'
+        name_prefix: 'name prefix'
+        org_name_address: 'company'
+        org_unit_address: 'department'
+        phone: 'phone'
+        postalcode: 'zip code'
+        region: 'region'
+        role_names: 'roles'
+        street_address: 'street'
+        tags: 'tags'
+        want_email: 'by email'
+        want_geo_location: 'geolocation'
+        want_phonecall: 'by phone'
+        want_snailmail: 'by mail'
+        submit: 'save'

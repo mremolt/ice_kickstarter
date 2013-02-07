@@ -1,0 +1,55 @@
+%h1
+  = display_field(@obj, :title)
+
+= display_field(@obj, :body)
+
+= simple_form_for(@profile_page_presenter, :url => cms_path(@obj)) do |form|
+  = form.error_notification
+
+  = form.input(:name_prefix)
+
+  = form.input(:first_name)
+
+  = form.input(:last_name)
+
+  = form.input(:language)
+
+  = form.input(:gender)
+
+  = form.input(:org_name_address)
+
+  = form.input(:org_unit_address)
+
+  = form.input(:job_title)
+
+  = form.input(:phone)
+
+  = form.input(:fax)
+
+  = form.input(:email)
+
+  = form.input(:mobile_phone)
+
+  = form.input(:street_address)
+
+  = form.input(:extended_address)
+
+  = form.input(:postalcode)
+
+  = form.input(:locality)
+
+  = form.input(:region)
+
+  = form.input(:country)
+
+  %div.row
+    %div.span2
+      = form.input(:want_email, :as => :boolean)
+
+    %div.span2
+      = form.input(:want_phonecall, :as => :boolean)
+
+    %div.span2
+      = form.input(:want_snailmail, :as => :boolean)
+
+  = form.button(:submit)
