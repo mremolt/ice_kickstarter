@@ -25,9 +25,7 @@ module Cms
 
         def add_country_select
           gem('localized_country_select', '>= 0.9.2')
-        end
-
-        def import_countries
+          run('bundle install')
           run('rake import:country_select LOCALE=de')
           run('rake import:country_select LOCALE=en')
         end
