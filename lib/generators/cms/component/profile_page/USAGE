@@ -1,0 +1,7 @@
+Description:
+    Installs the profile component including profile_page template.
+
+Example:
+    `rails generate cms:component:profile`
+
+    Gems: validates_email_format_of
