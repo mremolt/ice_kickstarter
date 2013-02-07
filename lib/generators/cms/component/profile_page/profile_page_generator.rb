@@ -27,6 +27,11 @@ module Cms
           gem('localized_country_select', '>= 0.9.2')
         end
 
+        def import_countries
+          run('rake import:country_select LOCALE=de')
+          run('rake import:country_select LOCALE=en')
+        end
+
         def extend_homepage
           file = 'app/models/homepage.rb'
           insert_point = "class Homepage < Obj\n"
@@ -81,11 +86,6 @@ module Cms
             log(:migration, 'Make sure to run "rake cms:migrate" to apply CMS changes and "bundle" to install new gem.')
           end
         rescue DuplicateResourceError
-        end
-
-        def import_countries
-          run('rake import:country_select LOCALE=de')
-          run('rake import:country_select LOCALE=en')
         end
 
         private
