@@ -43,3 +43,13 @@ en:
         want_phonecall: 'by phone'
         want_snailmail: 'by mail'
         submit: 'save'
+
+    options:
+      profile_page_presenter:
+        language:
+          de: 'german'
+          en: 'english'
+
+        gender:
+          M: 'male'
+          F: 'female'
