@@ -40,6 +40,10 @@ module Cms
         gem('active_attr', '0.7.0')
         gem('simple_form', '2.0.4')
 
+        Bundler.with_clean_env do
+          run('bundle')
+        end
+
         generate('simple_form:install --bootstrap --template-engine=haml')
 
         remove_file('config/locales/simple_form.de.yml')
@@ -50,12 +54,18 @@ module Cms
         gem_group(:test, :development) do
           gem('pry-rails', '0.2.2')
           gem('rails-footnotes', '3.7.9')
+          gem('better_errors', '0.5.0')
+          gem('binding_of_caller', '0.6.8')
+        end
+
+        Bundler.with_clean_env do
+          run('bundle')
         end
       end
 
       def install_test_framework
         gem_group(:test, :development) do
-          gem('rspec-rails')
+          gem('rspec-rails', '2.12.2')
         end
 
         generate('rspec:install')
@@ -68,7 +78,7 @@ module Cms
       end
 
       def include_and_configure_template_engine
-        gem('haml-rails')
+        gem('haml-rails', '0.3.5')
 
         application_erb_file = 'app/views/layouts/application.html.erb'
 
@@ -155,7 +165,7 @@ module Cms
       end
 
       def create_box_model
-        gem('cells')
+        gem('cells', '3.8.8')
 
         template('cells_error_handling.rb', 'config/initializers/cells.rb')
       end

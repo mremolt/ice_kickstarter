@@ -21,6 +21,10 @@ module Cms
 
         def add_email_validation
           gem('valid_email', '0.0.4')
+
+          Bundler.with_clean_env do
+            run('bundle')
+          end
         end
 
         def extend_homepage

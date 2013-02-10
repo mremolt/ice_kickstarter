@@ -1,4 +1,6 @@
 = v0.0.3
+  * The ICE Kickstarter now depends on Ruby 1.9.3. Please make sure to upgrade your Ruby version and
+    use the latest Infopark gems.
   * Added authorization support to simply protect access to a page via a before filter. Use
     ```before_filter Filters::Authorization``` in your controller to protect the entire page.
   * Complete refactoring of user management. Separated application user model from its remote user
