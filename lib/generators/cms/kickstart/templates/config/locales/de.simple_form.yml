@@ -9,10 +9,10 @@ de:
 
     error_notification:
       default_message: 'Bitte überprüfen Sie die unten stehenden Felder:'
-      user_presenter: 'Die Anmeldung ist fehlgeschlagen. Bitte versuchen Sie es erneut.'
+      login_presenter: 'Die Anmeldung ist fehlgeschlagen. Bitte versuchen Sie es erneut.'
 
     labels:
-      user_presenter:
+      login_presenter:
         login: 'Benutzername'
         password: 'Passwort'
         submit: 'test'
@@ -22,5 +22,5 @@ de:
 
   helpers:
     submit:
-      user_presenter:
+      login_presenter:
         create: 'Anmelden'

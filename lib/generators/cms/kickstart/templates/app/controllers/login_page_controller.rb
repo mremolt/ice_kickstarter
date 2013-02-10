@@ -2,9 +2,9 @@ class LoginPageController < CmsController
   include RailsConnector::Crm::Localizable
 
   def index
-    @user_presenter = UserPresenter.new(params[:user_presenter])
+    @presenter = LoginPresenter.new(params[:login_presenter])
 
-    if request.post? && @user_presenter.valid?
+    if request.post? && @presenter.valid?
       login
     elsif request.delete?
       logout
@@ -14,7 +14,7 @@ class LoginPageController < CmsController
   private
 
   def login
-    self.current_user = @user_presenter.authenticate
+    self.current_user = @presenter.authenticate
 
     if current_user.logged_in?
       target = params[:return_to] || cms_path(@obj.redirect_after_login)
