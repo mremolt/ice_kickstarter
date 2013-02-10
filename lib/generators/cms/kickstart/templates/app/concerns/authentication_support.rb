@@ -17,15 +17,6 @@ module AuthenticationSupport
 
   private
 
-  def authenticate!
-    unless logged_in?
-      homepage = @obj.try(:homepage) || Obj.default_homepage
-      target = cms_path(homepage.login_page, :return_to => @obj && cms_path(@obj))
-
-      redirect_to(target, :alert => t('de.flash.nologin'))
-    end
-  end
-
   def user_session_key
     :user
   end
