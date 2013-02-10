@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe ContactPageController do
-  let(:homepage) { mock_model(Homepage, :permalink => 'homepage') }
-  let(:contact_page) { mock(ContactPage, :locale => 'de', :activity_type => 'contact-test', :redirect_after_submit => homepage) }
+  let(:homepage) { mock_model(Homepage, permalink: 'homepage') }
+  let(:contact_page) { mock(ContactPage, locale: 'de', activity_type: 'contact-test', redirect_after_submit: homepage) }
 
   before do
     request.for_cms_object(contact_page)
@@ -42,7 +42,7 @@ describe ContactPageController do
     end
 
     context 'valid data' do
-      let(:service) { mock_model('Service', :submit => true) }
+      let(:service) { mock_model('Service', submit: true) }
       let(:attributes) { { 'email' => 'test@test.de', 'subject' => 'test', 'message' => 'test' } }
 
       before do
@@ -50,13 +50,13 @@ describe ContactPageController do
       end
 
       it 'redirects to hompage' do
-        post :index, { :contact_page_presenter => attributes }
+        post :index, { contact_page_presenter: attributes }
 
         response.should redirect_to("http://test.host/#{homepage.permalink}")
       end
 
       it 'sets flash notice' do
-        post :index, { :contact_page_presenter => attributes }
+        post :index, { contact_page_presenter: attributes }
 
         flash[:notice].should be_present
       end

@@ -3,7 +3,7 @@ module IceKickstarter
     isolate_namespace IceKickstarter
 
     config.generators do |generator|
-      generator.test_framework :rspec, :fixture => false
+      generator.test_framework :rspec, fixture: false
     end
 
     initializer('ice_kickstarter.configuration') do |app|

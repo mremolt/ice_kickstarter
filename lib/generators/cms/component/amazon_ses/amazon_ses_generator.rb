@@ -17,7 +17,7 @@ module Cms
 
           data = data.join("\n")
 
-          environment(data, :env => :production)
+          environment(data, env: :production)
 
           log(:environment, 'production: config.action_mailer.delivery_method = :smtp')
         end
@@ -31,7 +31,7 @@ module Cms
 
           data = data.join("\n")
 
-          environment(data, :env => :production)
+          environment(data, env: :production)
 
           log(:environment, 'production: config.action_mailer.raise_delivery_errors = true')
         end
@@ -41,14 +41,14 @@ module Cms
 
           data << '# Specifies the default url options used in link helpers of email templates'
           data << '  config.action_mailer.default_url_options = {'
-          data << "    :host => 'localhost',"
-          data << '    :port => 3000,'
+          data << "    host: 'localhost',"
+          data << '    port: 3000,'
           data << '  }'
           data << ''
 
           data = data.join("\n")
 
-          environment(data, :env => :test)
+          environment(data, env: :test)
 
           log(:environment, 'test: config.action_mailer.default_url_options')
         end

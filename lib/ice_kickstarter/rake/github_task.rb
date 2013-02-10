@@ -17,7 +17,7 @@ module IceKickstarter
                 "token=#{api_key}",
               ].join('&')
 
-              sh("curl -X GET #{url}/developers -d \"#{params}\"", :verbose => false)
+              sh("curl -X GET #{url}/developers -d \"#{params}\"", verbose: false)
               puts
             end
 
@@ -29,14 +29,14 @@ module IceKickstarter
                 "token=#{api_key}",
               ].join('&')
 
-              sh("curl -X GET #{url}/developers/#{args[:username]} -d \"#{params}\"", :verbose => false)
+              sh("curl -X GET #{url}/developers/#{args[:username]} -d \"#{params}\"", verbose: false)
               puts
             end
 
             desc 'Add github user with "pull" (read-only, default) or "push" (read and write) permission'
             task :add, [:username, :permission] do |_, args|
               validate_username(args)
-              args.with_defaults(:permission => 'pull')
+              args.with_defaults(permission: 'pull')
 
               params = [
                 "token=#{api_key}",
@@ -44,7 +44,7 @@ module IceKickstarter
                 "developer[perm]=#{args[:permission]}",
               ].join('&')
 
-              sh("curl -X POST #{url}/developers -d \"#{params}\"", :verbose => false)
+              sh("curl -X POST #{url}/developers -d \"#{params}\"", verbose: false)
               puts
             end
 
@@ -58,7 +58,7 @@ module IceKickstarter
                 "developer[perm]=#{args[:permission]}",
               ].join('&')
 
-              sh("curl -X PUT #{url}/developers/#{args[:username]} -d \"#{params}\"", :verbose => false)
+              sh("curl -X PUT #{url}/developers/#{args[:username]} -d \"#{params}\"", verbose: false)
               puts
             end
 
@@ -70,7 +70,7 @@ module IceKickstarter
                 "token=#{api_key}",
               ].join('&')
 
-              sh("curl -X DELETE #{url}/developers/#{args[:username]} -d \"#{params}\"", :verbose => false)
+              sh("curl -X DELETE #{url}/developers/#{args[:username]} -d \"#{params}\"", verbose: false)
               puts
             end
           end

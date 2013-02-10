@@ -8,31 +8,31 @@ module Cms
       source_root File.expand_path('../templates', __FILE__)
 
       class_option :type,
-        :type => :string,
-        :aliases => '-t',
-        :default => 'string',
-        :desc => 'Type of the CMS attribute (string | text | html | enum | multienum | linklist | date).'
+        type: :string,
+        aliases: '-t',
+        default: 'string',
+        desc: 'Type of the CMS attribute (string | text | html | enum | multienum | linklist | date).'
 
       class_option :values,
-        :type => :array,
-        :aliases => '-v',
-        :default => [],
-        :desc => 'Possible values for attributes of type (enum | multienum).'
+        type: :array,
+        aliases: '-v',
+        default: [],
+        desc: 'Possible values for attributes of type (enum | multienum).'
 
       class_option :title,
-        :type => :string,
-        :default => '',
-        :desc => 'Title of the CMS attribute.'
+        type: :string,
+        default: '',
+        desc: 'Title of the CMS attribute.'
 
       class_option :min_size,
-        :type => :numeric,
-        :default => 0,
-        :desc => 'Minimum number of links in a linklist.'
+        type: :numeric,
+        default: 0,
+        desc: 'Minimum number of links in a linklist.'
 
       class_option :max_size,
-        :type => :numeric,
-        :default => 0,
-        :desc => 'Maximum number of links in a linklist.'
+        type: :numeric,
+        default: 0,
+        desc: 'Maximum number of links in a linklist.'
 
       def create_migration_file
         validate_attribute(file_name)

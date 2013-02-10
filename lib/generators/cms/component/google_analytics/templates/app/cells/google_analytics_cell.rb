@@ -1,6 +1,10 @@
 class GoogleAnalyticsCell < Cell::Rails
-  cache :show, :expires_in => 5.minutes do |cell, page|
-    [cell.session[:edit_marker], RailsConnector::Workspace.current.revision_id, page && page.homepage.id]
+  cache :show, expires_in: 5.minutes do |cell, page|
+    [
+      Filters::EnvironmentDetection.preview_environment?,
+      RailsConnector::Workspace.current.revision_id,
+      page && page.homepage.id
+    ]
   end
 
   def show(homepage)

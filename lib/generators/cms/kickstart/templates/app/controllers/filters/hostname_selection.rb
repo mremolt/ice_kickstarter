@@ -36,7 +36,7 @@ module Filters
       end
 
       def desired_url
-        cms_url(current_obj, :host => desired_hostname)
+        cms_url(current_obj, host: desired_hostname)
       end
 
       def desired_hostname

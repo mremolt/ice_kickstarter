@@ -31,11 +31,11 @@ module Filters
       # set, so that the user returns to the originally requested page after
       # a successfull login.
       def redirect_to_login_page
-        redirect_to(target, :alert => I18n.t(:'flash.authorization_failed'))
+        redirect_to(target, alert: I18n.t(:'flash.authorization_failed'))
       end
 
       def target
-        controller.cms_path(login_page, :return_to => return_to)
+        controller.cms_path(login_page, return_to: return_to)
       end
 
       def return_to

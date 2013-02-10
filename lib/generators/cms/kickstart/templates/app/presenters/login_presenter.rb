@@ -5,8 +5,8 @@ class LoginPresenter
   attr_accessor :login
   attr_accessor :password
 
-  validates :login, :presence => true
-  validates :password, :presence => true
+  validates :login, presence: true
+  validates :password, presence: true
 
   def authenticate
     Rails.configuration.user_manager.authenticate(login, password)

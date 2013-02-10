@@ -1,7 +1,7 @@
 %ul.nav.pull-right
   %li.dropdown
     - if @workspaces.size > 1
-      %a.dropdown-toggle{:'data-toggle' => 'dropdown', :href => '#'}
+      %a.dropdown-toggle{:'data-toggle' => 'dropdown', href: '#'}
         Workspace:
         = @current_workspace['title']
 

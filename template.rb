@@ -2,11 +2,11 @@ gem('infopark_rails_connector')
 gem('infopark_cloud_connector')
 
 gem_group(:assets) do
-  gem('therubyracer', :require => 'v8')
+  gem('therubyracer', require: 'v8')
 end
 
 gem_group(:test, :development) do
-  gem('ice_kickstarter', :path => '../../../')
+  gem('ice_kickstarter', path: '../../../')
 end
 
 run('bundle install')
@@ -16,8 +16,8 @@ generate('rails_connector:install', '--force')
 remove_file 'public/index.html'
 gsub_file("app/views/layouts/application.html.erb", %r{<%= yield %>}, %{
   <%= yield %>
-  <%= render :partial => 'search/mini_panel' %> |
-  <%= link_to 'Login', user_path(:action => 'login') %>
+  <%= render 'search/mini_panel' %> |
+  <%= link_to 'Login', user_path(action: 'login') %>
 })
 
 # WebCRM

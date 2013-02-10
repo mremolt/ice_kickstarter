@@ -17,7 +17,7 @@ module UserManager
     # Creates a new using and prefills it with the given attributes. As a new
     # user needs an ID, it has to be provided in the attributes.
     def create_user(attributes)
-      user = User.new(:id => attributes.delete(:id))
+      user = User.new(id: attributes.delete(:id))
 
       mapper.update(user, attributes)
     end

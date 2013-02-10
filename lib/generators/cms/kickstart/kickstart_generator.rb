@@ -7,7 +7,7 @@ module Cms
       include Migration
 
       source_root File.expand_path('../templates', __FILE__)
-      class_option :configuration_path, :type => :string, :default => nil, :desc => 'Path to a JSON configuration file.'
+      class_option :configuration_path, type: :string, default: nil, desc: 'Path to a JSON configuration file.'
 
       def initialize(args = [], options = {}, config = {})
         options << '--force'
@@ -31,7 +31,7 @@ module Cms
             name = generator['name']
             options = Array(generator['options'])
 
-            Rails::Generators.invoke(name, options, :behavior => behavior)
+            Rails::Generators.invoke(name, options, behavior: behavior)
           end
         end
       end
@@ -57,6 +57,10 @@ module Cms
           gem('better_errors', '0.5.0')
           gem('binding_of_caller', '0.6.8')
         end
+
+        developer_initializer_path = 'config/initializers/developer.rb'
+        append_file('.gitignore', developer_initializer_path)
+        template('developer.rb', developer_initializer_path)
 
         Bundler.with_clean_env do
           run('bundle')
@@ -151,7 +155,7 @@ module Cms
 
         migration_template('create_structure.rb', 'cms/migrate/create_structure.rb')
 
-        route("match ':id/login' => 'login_page#index', :as => 'login_page'")
+        route("match ':id/login' => 'login_page#index', as: 'login_page'")
       end
 
       def copy_app_directory

@@ -34,9 +34,9 @@ module UserManager
     # remote user model.
     def mapping
       {
-        :city => :locality,
-        :company => :org_name_address,
-        :department => :org_unit_address,
+        city: :locality,
+        company: :org_name_address,
+        department: :org_unit_address,
       }
     end
 

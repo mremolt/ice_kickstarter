@@ -4,7 +4,7 @@ class SearchPageController < CmsController
     @hits = []
 
     if @query.present?
-      @hits = SearchRequest.new(@query, :offset => 0, :limit => 100).fetch_hits
+      @hits = SearchRequest.new(@query, offset: 0, limit: 100).fetch_hits
       @hits = @hits.map { |hit| hit.obj.page }.compact.uniq
     else
       flash.now[:alert] = t('search.specify_query')

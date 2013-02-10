@@ -8,8 +8,9 @@
   %small
     (#{obj_class.title})
 
-  %span.badge{:class => obj_class.count == 0 ? 'badge-important' : nil}
-    ⅀ #{obj_class.count}
+  - if @current_workspace['title'] == 'published'
+    %span.badge{class: obj_class.count == 0 ? 'badge-important' : nil}
+      ⅀ #{obj_class.count}
 
 %ul.unstyled
   %li
@@ -19,10 +20,10 @@
     = obj_class.type
 
 - if obj_class.attributes?
-  = render('ice_kickstarter/dashboards/show/attributes', :attributes => obj_class.attributes)
+  = render('ice_kickstarter/dashboards/show/attributes', attributes: obj_class.attributes)
 
 - if obj_class.mandatory_attributes?
-  = render('ice_kickstarter/dashboards/show/mandatory_attributes', :attributes => obj_class.mandatory_attributes)
+  = render('ice_kickstarter/dashboards/show/mandatory_attributes', attributes: obj_class.mandatory_attributes)
 
 - if obj_class.preset_attributes?
-  = render('ice_kickstarter/dashboards/show/preset_attributes', :attributes => obj_class.preset_attributes)
+  = render('ice_kickstarter/dashboards/show/preset_attributes', attributes: obj_class.preset_attributes)

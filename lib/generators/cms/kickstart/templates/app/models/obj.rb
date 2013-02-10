@@ -1,4 +1,6 @@
 class Obj < ::RailsConnector::BasicObj
+  include Cms::Attributes::SortKey
+
   def self.homepage
     default_homepage
   end
@@ -20,7 +22,7 @@ class Obj < ::RailsConnector::BasicObj
   end
 
   def sorted_toclist
-    toclist.sort_by { |obj| obj[:sort_key].to_s }
+    toclist.sort_by { |obj| obj.sort_key.to_s }
   end
 
   def boxes

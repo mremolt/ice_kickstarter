@@ -3,7 +3,7 @@
 
 = display_field(@obj, :body)
 
-= simple_form_for(@presenter, :url => cms_path(@obj)) do |form|
+= simple_form_for(@presenter, url: cms_path(@obj)) do |form|
   = hidden_field_tag(:return_to, params[:return_to])
 
   = form.error_notification

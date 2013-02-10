@@ -47,8 +47,8 @@ describe Cms::Generators::Component::AmazonSesGenerator do
         directory 'environments' do
           file 'test.rb' do
             contains 'config.action_mailer.default_url_options = {'
-            contains ":host => 'localhost',"
-            contains ':port => 3000,'
+            contains "host: 'localhost',"
+            contains 'port: 3000,'
           end
         end
       end

@@ -5,9 +5,9 @@ class ContactPagePresenter
   attribute :subject
   attribute :message
 
-  validates :subject, :presence => true
-  validates :email, :presence => true
-  validates :email, :email => { :message => I18n.t('activemodel.errors.messages.invalid_email') }
+  validates :subject, presence: true
+  validates :email, presence: true
+  validates :email, email: { message: I18n.t('activemodel.errors.messages.invalid_email') }
 
   def initialize(user, attributes)
     attributes ||= {}
@@ -21,7 +21,7 @@ class ContactPagePresenter
 
   def prefill!(attributes, user)
     attributes.reverse_merge!({
-      :email => user.email,
+      email: user.email,
     })
   end
 end

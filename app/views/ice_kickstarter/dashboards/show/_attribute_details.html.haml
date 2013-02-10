@@ -10,9 +10,9 @@
       - next unless item
 
       .span6.well.well-small
-        = render('ice_kickstarter/dashboards/show/attribute', :attribute => item)
+        = render('ice_kickstarter/dashboards/show/attribute', attribute: item)
 
 - stats.grouped_attributes.each do |type, list|
   .progress
-    .bar{:style => "width: #{list.size / stats.maximum_attributes * 100}%"}
+    .bar{style: "width: #{list.size / stats.maximum_attributes * 100}%"}
       #{type}: #{list.size}

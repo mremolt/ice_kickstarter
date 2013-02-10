@@ -22,7 +22,7 @@
     - editors.each do |editor|
       %tr
         %td
-          = link_to(Rails.configuration.ice_kickstarter.contact_url(editor.id), :target => :_blank) do
+          = link_to(Rails.configuration.ice_kickstarter.contact_url(editor.id), target: :_blank) do
             = [editor.last_name, editor.first_name].compact.join(', ')
 
         %td

@@ -16,9 +16,9 @@ describe Cms::Generators::Component::ContactPageGenerator do
 
   def prepare_environments
     paths = {
-      :models => "#{destination_root}/app/models",
-      :cells => "#{destination_root}/app/cells",
-      :meta_navigation => "#{destination_root}/app/cells/meta_navigation",
+      models: "#{destination_root}/app/models",
+      cells: "#{destination_root}/app/cells",
+      meta_navigation: "#{destination_root}/app/cells/meta_navigation",
     }
 
     paths.each do |_, path|

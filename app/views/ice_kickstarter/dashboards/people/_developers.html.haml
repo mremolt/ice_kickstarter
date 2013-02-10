@@ -21,8 +21,8 @@
     - developers.each do |developer|
       %tr
         %td
-          = link_to(developer.username, "https://github.com/#{developer.username}", :target => :_blank)
+          = link_to(developer.username, "https://github.com/#{developer.username}", target: :_blank)
 
         %td
-          %span.label{:class => developer.perm == 'push' ? 'label-success' : 'label-warning'}
+          %span.label{class: developer.perm == 'push' ? 'label-success' : 'label-warning'}
             = developer.perm

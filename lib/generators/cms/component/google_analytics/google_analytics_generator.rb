@@ -9,16 +9,16 @@ module Cms
         source_root File.expand_path('../templates', __FILE__)
 
         class_option :anonymize_ip_default,
-          :type => :string,
-          :default => 'No',
-          :desc => 'Default anonymize ip setting. (Yes | No)',
-          :banner => 'VALUE'
+          type: :string,
+          default: 'No',
+          desc: 'Default anonymize ip setting. (Yes | No)',
+          banner: 'VALUE'
 
         class_option :tracking_id_default,
-          :type => :string,
-          :default => '',
-          :desc => 'Default tracking id setting.',
-          :banner => 'ID'
+          type: :string,
+          default: '',
+          desc: 'Default tracking id setting.',
+          banner: 'ID'
 
         def copy_app_directory
           directory('app')
@@ -36,7 +36,7 @@ module Cms
 
           data = data.join("\n")
 
-          insert_into_file(file, data, :after => insert_point)
+          insert_into_file(file, data, after: insert_point)
         end
 
         def create_migration

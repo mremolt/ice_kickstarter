@@ -3,7 +3,7 @@ module Filters
     class << self
       attr_reader :controller
 
-      delegate :params, :session, :request, :logger, :redirect_to, :current_user, :to => :controller
+      delegate :params, :session, :request, :logger, :redirect_to, :current_user, to: :controller
 
       def filter(controller)
         @controller = controller

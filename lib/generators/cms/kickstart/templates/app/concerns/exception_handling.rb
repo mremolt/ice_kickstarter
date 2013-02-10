@@ -3,14 +3,14 @@ module ExceptionHandling
 
   included do
     unless config.consider_all_requests_local
-      rescue_from(RailsConnector::ResourceNotFound, :with => :not_found)
-      rescue_from(ActiveResource::ResourceNotFound, :with => :not_found)
+      rescue_from(RailsConnector::ResourceNotFound, with: :not_found)
+      rescue_from(ActiveResource::ResourceNotFound, with: :not_found)
     end
   end
 
   def not_found
     options = {
-      :status => 404,
+      status: 404,
     }
 
     respond_to do |type|
@@ -27,7 +27,7 @@ module ExceptionHandling
         render(options)
       end
       type.all do
-        options[:nothing => true]
+        options[nothing: true]
 
         render(options)
       end

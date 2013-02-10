@@ -7,9 +7,9 @@ module Cms
         include Migration
 
         class_option :homepage_path,
-          :type => :string,
-          :default => '/website/de',
-          :desc => 'Path to a CMS homepage, for which to create the contact form.'
+          type: :string,
+          default: '/website/de',
+          desc: 'Path to a CMS homepage, for which to create the contact form.'
 
         source_root File.expand_path('../templates', __FILE__)
 
@@ -38,7 +38,7 @@ module Cms
 
           data = data.join("\n")
 
-          insert_into_file(file, data, :after => insert_point)
+          insert_into_file(file, data, after: insert_point)
         end
 
         def extend_cell
@@ -52,7 +52,7 @@ module Cms
 
           data = data.join("\n")
 
-          insert_into_file(file, data, :after => insert_point)
+          insert_into_file(file, data, after: insert_point)
         end
 
         def extend_view
@@ -68,7 +68,7 @@ module Cms
 
           data = data.join("\n")
 
-          insert_into_file(file, data, :after => insert_point)
+          insert_into_file(file, data, after: insert_point)
         end
 
         def create_migration

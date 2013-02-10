@@ -19,7 +19,7 @@ class LoginPageController < CmsController
     if current_user.logged_in?
       target = params[:return_to] || cms_path(@obj.redirect_after_login)
 
-      redirect_to(target, :notice => t(:'flash.login.success'))
+      redirect_to(target, notice: t(:'flash.login.success'))
     end
   end
 
@@ -28,6 +28,6 @@ class LoginPageController < CmsController
 
     target = cms_path(@obj.redirect_after_logout)
 
-    redirect_to(target, :notice => t(:'flash.logout.success'))
+    redirect_to(target, notice: t(:'flash.logout.success'))
   end
 end

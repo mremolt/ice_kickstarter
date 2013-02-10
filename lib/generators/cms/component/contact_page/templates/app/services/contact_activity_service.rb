@@ -25,13 +25,13 @@ class ContactActivityService
 
   def mapping
     {
-      :subject => :title,
-      :kind => :kind,
-      :state => :state,
-      :contact_id => :contact_id,
-      :name => :custom_name,
-      :email => :custom_email,
-      :message => :custom_message,
+      subject: :title,
+      kind: :kind,
+      state: :state,
+      contact_id: :contact_id,
+      name: :custom_name,
+      email: :custom_email,
+      message: :custom_message,
     }
   end
 

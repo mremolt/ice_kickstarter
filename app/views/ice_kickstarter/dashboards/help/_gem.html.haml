@@ -1,6 +1,6 @@
 %tr
   %td
-    = link_to(gem.rubygems_url, :target => 'blank') do
+    = link_to(gem.rubygems_url, target: 'blank') do
       = gem.name
 
   - class_name = gem.latest? ? 'badge-success' : 'badge-warning'
@@ -9,7 +9,7 @@
     = gem.version
 
   %td
-    %span.badge{:class => class_name, :title => "Latest Version: #{gem.latest_version}"}
+    %span.badge{class: class_name, title: "Latest Version: #{gem.latest_version}"}
       - if gem.latest?
         &nbsp;
       - else

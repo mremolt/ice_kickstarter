@@ -31,17 +31,17 @@ class User
 
   (attribute_names - ['id']).each do |name|
     define_method(name) do
-      if super.nil?
+      if super().nil?
         lazy_load(name)
       else
-        super
+        super()
       end
     end
 
     define_method("#{name}=") do |value|
       changed_attributes[name] = value
 
-      super
+      super(value)
     end
   end
 

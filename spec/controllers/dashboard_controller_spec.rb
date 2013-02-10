@@ -20,7 +20,7 @@ module IceKickstarter
     it 'does not allow remote requests' do
       controller.stub(:local_request? => false)
 
-      get :show, :use_route => 'cms'
+      get :show, use_route: 'cms'
 
       response.status.should eq(403)
     end
@@ -28,20 +28,20 @@ module IceKickstarter
     it 'renders an error message when request was forbidden' do
       controller.stub(:local_request? => false)
 
-      get :show, :use_route => 'cms'
+      get :show, use_route: 'cms'
 
       response.body.should include('p')
     end
 
     it 'allows local requests' do
-      get :show, :use_route => 'cms'
+      get :show, use_route: 'cms'
 
       response.should be_success
     end
 
     shared_examples 'it renders the dashboard layout' do
       it 'renders dashboard layout' do
-        get action, :use_route => 'cms'
+        get action, use_route: 'cms'
 
         response.should render_template('ice_kickstarter/dashboard')
       end
@@ -52,7 +52,7 @@ module IceKickstarter
       it_behaves_like 'it renders the dashboard layout'
 
       it 'assigns stats' do
-        get action, :use_route => 'cms'
+        get action, use_route: 'cms'
 
         assigns[:meta_stats].should be_a(Dashboard::MetaStats)
       end
@@ -63,7 +63,7 @@ module IceKickstarter
       it_behaves_like 'it renders the dashboard layout'
 
       it 'assigns gems' do
-        get action, :use_route => 'cms'
+        get action, use_route: 'cms'
 
         assigns[:gems].should eq(gems)
       end
@@ -74,7 +74,7 @@ module IceKickstarter
       it_behaves_like 'it renders the dashboard layout'
 
       it 'assigns editors and developers' do
-        get action, :use_route => 'cms'
+        get action, use_route: 'cms'
 
         assigns[:editors].should eq(editors)
         assigns[:developers].should eq(developers)
@@ -86,7 +86,7 @@ module IceKickstarter
       it_behaves_like 'it renders the dashboard layout'
 
       it 'assigns cms and crm stats' do
-        get action, :use_route => 'cms'
+        get action, use_route: 'cms'
 
         assigns[:cms_stats].should eq(cms_stats)
         assigns[:crm_stats].should eq(crm_stats)

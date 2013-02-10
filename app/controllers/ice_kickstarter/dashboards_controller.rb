@@ -5,6 +5,16 @@ module IceKickstarter
     before_filter :require_local!
 
     def show
+      @workspaces = RailsConnector::CmsRestApi.get('workspaces')['results']
+
+      @current_workspace = @workspaces.detect do |workspace|
+        workspace['id'] == RailsConnector::Workspace.current.id
+      end
+
+      @workspaces.each do |workspace|
+        workspace['title'] ||= 'Published'
+      end
+
       @meta_stats = Dashboard::MetaStats.new
     end
 
@@ -27,8 +37,8 @@ module IceKickstarter
     def require_local!
       unless local_request?
         render(
-          :text => '<p>For security purposes, this information is only available to local requests.</p>',
-          :status => :forbidden
+          text: '<p>For security purposes, this information is only available to local requests.</p>',
+          status: :forbidden
         )
       end
     end
