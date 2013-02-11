@@ -33,6 +33,38 @@ module Cms
           rescue Cms::Generators::DuplicateResourceError
         end
 
+        def update_routes
+          route("match 'google_maps/:id' => 'google_maps#show', as: 'google_map'")
+        end
+
+        def update_application_layout
+          file = 'app/views/layouts/application.html.haml'
+          insert_point = "= javascript_include_tag('application')"
+
+          data = []
+          data << "\n"
+          data << "    = javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=false'"
+          data = data.join("\n")
+
+          insert_into_file(file, data, after: insert_point)
+        end
+
+        def update_application_js
+          file = 'app/assets/javascripts/application.js'
+          insert_point = "//= require infopark_rails_connector"
+
+          data = []
+          data << "\n"
+          data << '//= require google_maps/base'
+          data << "\n"
+          data << '$(document).ready(function() {'
+          data << "  window.googleMapApp = new window.GoogleMap.App('#map_canvas', 'data-url');"
+          data << '});'
+          data = data.join("\n")
+
+          insert_into_file(file, data, after: insert_point)
+        end
+
         private
 
         def map_class_name
