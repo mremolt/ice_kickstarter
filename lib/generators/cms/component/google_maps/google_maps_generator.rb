@@ -10,7 +10,7 @@ module Cms
 
         def copy_app_directory
           directory('app')
-          #directory('spec')
+          directory('spec')
         end
 
         def create_migration
