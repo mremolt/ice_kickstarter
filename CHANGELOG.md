@@ -1,4 +1,6 @@
 = v0.0.3
+  * BoxImage now supports a link attribute, that defines if and where the displayed image is linked
+    to.
   * Support for ```Redirect``` cms objects. They allow to create a navigation item, for example,
     that redirects to a different page.
   * Assets are now shared between deployments via ```before_migrate.rb``` deploy hook.

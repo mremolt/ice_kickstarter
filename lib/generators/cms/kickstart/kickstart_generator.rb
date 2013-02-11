@@ -151,8 +151,9 @@ module Cms
 
         Rails::Generators.invoke('cms:attribute', ['source', '--type=linklist', '--title=Source'])
         Rails::Generators.invoke('cms:attribute', ['caption', '--type=string', '--title=Caption'])
+        Rails::Generators.invoke('cms:attribute', ['link_to', '--type=linklist', '--title=Link'])
         Rails::Generators.invoke('cms:model', ['BoxText', '--title=Box: Text', '--attributes=sort_key'])
-        Rails::Generators.invoke('cms:model', ['BoxImage', '--title=Box: Image', '--attributes=source', 'caption', 'sort_key'])
+        Rails::Generators.invoke('cms:model', ['BoxImage', '--title=Box: Image', '--attributes=source', 'caption', 'link_to', 'sort_key'])
 
         Rails::Generators.invoke('cms:attribute', ['redirect_link', '--type=linklist', '--title=Redirect Link', '--max-size=1'])
         Rails::Generators.invoke('cms:model', ['Redirect', '--title=Redirect', '--attributes=sort_key', 'redirect_link', 'show_in_navigation'])
