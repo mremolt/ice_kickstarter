@@ -1,4 +1,5 @@
 = v0.0.3
+  * Assets are now shared between deployments via ```before_migrate.rb``` deploy hook.
   * The body tag now holds the name of the current controller. This allows easier css scoping.
   * Included [BetterErrors](https://github.com/charliesome/better_errors) and
     [BindingOfCaller](https://github.com/banister/binding_of_caller) as core development gems. Also
