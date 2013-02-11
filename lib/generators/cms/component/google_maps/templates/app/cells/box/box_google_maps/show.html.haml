@@ -1,0 +1,9 @@
+.box.box_google_maps.well
+  %h3
+    = display_field(@box, :title)
+  %p
+    = display_field(@box, :body)
+  .map
+    %data-url
+      =google_map_path(@box, :format => :json)
+    #map_canvas
