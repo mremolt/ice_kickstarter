@@ -154,6 +154,9 @@ module Cms
         Rails::Generators.invoke('cms:model', ['BoxText', '--title=Box: Text', '--attributes=sort_key'])
         Rails::Generators.invoke('cms:model', ['BoxImage', '--title=Box: Image', '--attributes=source', 'caption', 'sort_key'])
 
+        Rails::Generators.invoke('cms:attribute', ['redirect_link', '--type=linklist', '--title=Redirect Link', '--max-size=1'])
+        Rails::Generators.invoke('cms:model', ['Redirect', '--title=Redirect', '--attributes=sort_key', 'redirect_link', 'show_in_navigation'])
+
         migration_template('create_structure.rb', 'cms/migrate/create_structure.rb')
 
         route("match ':id/login' => 'login_page#index', as: 'login_page'")
@@ -185,7 +188,7 @@ module Cms
       private
 
       def tenant_name
-        content = File.read('config/rails_connector.yml')
+        content = File.read("#{Rails.root}/config/rails_connector.yml")
 
         YAML.load(content)['cms_api']['http_host']
       end

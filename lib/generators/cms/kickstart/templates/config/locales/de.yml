@@ -16,3 +16,7 @@ de:
     hits_found: "Ihre Suchanfrage nach '%{query}' lieferte folgende Treffer:"
     no_hits: "Ihre Suchanfrage nach '%{@query}' lieferte keine Treffer."
     no_index: 'Der aktuelle Workspace besitzt keinen Suchindex.'
+
+  redirect:
+    index:
+      link_undefined: 'Es ist kein Redirect-Ziel konfiguriert.'

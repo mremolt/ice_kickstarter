@@ -1,4 +1,6 @@
 = v0.0.3
+  * Support for ```Redirect``` cms objects. They allow to create a navigation item, for example,
+    that redirects to a different page.
   * Assets are now shared between deployments via ```before_migrate.rb``` deploy hook.
   * The body tag now holds the name of the current controller. This allows easier css scoping.
   * Included [BetterErrors](https://github.com/charliesome/better_errors) and
