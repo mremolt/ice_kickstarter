@@ -168,6 +168,7 @@ module Cms
         directory('lib')
         directory('config')
         directory('deploy')
+        directory('spec')
       end
 
       def extend_gitignore
