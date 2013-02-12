@@ -29,7 +29,7 @@ class CreateProfilePage < ::RailsConnector::Migration
       :_path => path,
       :_obj_class => class_name,
       :title => 'Profil',
-      :body => '<p>Hier können Sie Ihre persönlichen Daten bearbeiten.</p>',
+      :body => '<p>Hier koennen Sie Ihre persoenlichen Daten bearbeiten.</p>',
       :show_in_navigation => 'Yes'
     )
 
