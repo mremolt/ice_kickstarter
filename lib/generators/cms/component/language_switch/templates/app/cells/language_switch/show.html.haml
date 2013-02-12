@@ -1,0 +1,7 @@
+- @languages.each do |homepage|
+  %span(id="language_#{homepage.id}")
+    - language = homepage.locale
+    - if language == @current_language
+      = I18n.t(language)
+    - else
+      = link_to(I18n.t(language), cms_path(homepage)) 
