@@ -1,0 +1,5 @@
+Description:
+    Generates a video content element.
+
+Example:
+    `rails generate cms:component:video`
