@@ -1,4 +1,7 @@
 = v0.0.3
+  * Added two new rake tasks ```rake cms:info:attributes[workspace]``` which returns a list of
+    attributes and their type and ```rake cms:info:obj_classes[workspace]``` which returns a list of
+    object classes and their attributes. For each task the workspace can optionally be provided.
   * BoxImage now supports a link attribute, that defines if and where the displayed image is linked
     to.
   * Support for ```Redirect``` cms objects. They allow to create a navigation item, for example,
