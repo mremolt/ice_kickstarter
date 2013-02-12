@@ -14,12 +14,12 @@ class ProfilePagePresenter
   attribute :job_title
   attribute :language
   attribute :last_name
-  attribute :locality
+  attribute :city
   attribute :login
   attribute :mobile_phone
   attribute :name_prefix
-  attribute :org_name_address
-  attribute :org_unit_address
+  attribute :company
+  attribute :department
   attribute :phone
   attribute :postalcode
   attribute :region
@@ -47,24 +47,24 @@ class ProfilePagePresenter
 
   def save
     if valid?
-      save_crm_contact
+      save_contact
     end
   end
 
 private
 
-  def save_crm_contact
+  def save_contact
     attributes.each do |key, value|
-      if user.crm_attributes.include?(key)
-        user.crm_attributes[key] = value
+      if user.attributes.include?(key)
+        user[key] = value
       end
     end
 
-    user.crm_contact.save
+    user.save
   end
 
   def prefill!(user, attributes)
     attributes['user_id'] = user.id
-    attributes.reverse_merge!(user.crm_attributes)
+    attributes.reverse_merge!(user.attributes)
   end
 end
