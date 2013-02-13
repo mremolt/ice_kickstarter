@@ -24,7 +24,7 @@ Gem::Specification.new do |gem|
   gem.test_files  = Dir['spec/**/*']
   gem.files       = Dir['lib/**/*', 'LICENSE', 'Rakefile', 'README.md', 'CHANGELOG.md']
 
-  gem.add_dependency 'rails', '~> 3.2.11'
+  gem.add_dependency 'rails', '~> 3.2.12'
   gem.add_dependency 'jquery-rails'
   gem.add_dependency 'haml-rails'
   gem.add_dependency 'less-rails-bootstrap'
