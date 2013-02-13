@@ -78,7 +78,7 @@ module Cms
       def create_deploy_hooks
         create_file('deploy/after_restart.rb')
         create_file('deploy/before_symlink.rb')
-        create_file('deploy/before_migrate.rb')
+        prepend_file('deploy/before_migrate', 'deploy/before_migrate.rb')
         empty_directory('deploy/templates')
       end
 
