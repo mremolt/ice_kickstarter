@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ice_kickstarter (0.0.2)
+    ice_kickstarter (0.0.3)
       haml-rails
       infopark_cloud_connector (>= 6.8.2.7.128454143)
       infopark_rails_connector (>= 6.8.2.7.128454143)
