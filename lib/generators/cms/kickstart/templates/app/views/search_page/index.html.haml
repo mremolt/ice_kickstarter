@@ -1,9 +1,9 @@
 %form
-  %input{:name => 'q', :type => 'text', :value => @query, :placeholder => t('search.placeholder')}
+  %input{name: 'q', type: 'text', value: @query, placeholder: t('search.placeholder')}
 
 - if @query.present? && @hits.length > 0
   %h2
-    = t('hits_found', :query => h(@query))
+    = t('hits_found', query: h(@query))
 
   %ul
     - @hits.each do |hit|
@@ -15,4 +15,4 @@
 
 - elsif @query.present?
   %h2
-    = t('no_hits', :query => h(@query))
+    = t('no_hits', query: h(@query))

@@ -8,22 +8,56 @@ module Cms
       source_root File.expand_path('../templates', __FILE__)
 
       class_option :type,
-        :type => :string,
-        :aliases => '-t',
-        :default => 'string',
-        :desc => 'Type of the CMS attribute (string | text | html | enum | multienum | linklist | date).'
+        type: :string,
+        aliases: '-t',
+        default: 'string',
+        desc: 'Type of the CMS attribute (string | text | html | enum | multienum | linklist | date).'
 
       class_option :values,
-        :type => :array,
-        :aliases => '-v',
-        :default => [],
-        :desc => 'Possible values for attributes of type (enum | multienum).'
+        type: :array,
+        aliases: '-v',
+        default: [],
+        desc: 'Possible values for attributes of type (enum | multienum).'
+
+      class_option :title,
+        type: :string,
+        default: '',
+        desc: 'Title of the CMS attribute.'
+
+      class_option :min_size,
+        type: :numeric,
+        default: 0,
+        desc: 'Minimum number of links in a linklist.'
+
+      class_option :max_size,
+        type: :numeric,
+        default: 0,
+        desc: 'Maximum number of links in a linklist.'
 
       def create_migration_file
-        migration_template('migration.rb', "cms/migrate/create_#{file_name}_attribute.rb")
+        validate_attribute(file_name)
+
+        migration_template("migrations/#{type}_migration.rb", "cms/migrate/create_#{file_name}_attribute.rb")
+      rescue DuplicateResourceError
+      end
+
+      def create_attribute_file
+        template("modules/#{type}_attribute.rb", "app/concerns/cms/attributes/#{file_name}.rb")
       end
 
       private
+
+      def min_size
+        options[:min_size]
+      end
+
+      def max_size
+        options[:max_size]
+      end
+
+      def title
+        options[:title] || human_name
+      end
 
       def type
         options[:type]

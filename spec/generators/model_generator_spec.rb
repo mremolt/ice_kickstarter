@@ -19,8 +19,18 @@ describe Cms::Generators::ModelGenerator do
       directory 'app' do
         directory 'models' do
           file 'news.rb' do
-            contains 'class News < ::RailsConnector::Obj'
+            contains 'class News < Obj'
           end
+        end
+      end
+    }
+  end
+
+  it 'creates migration file' do
+    destination_root.should have_structure {
+      directory 'cms' do
+        directory 'migrate' do
+          migration 'create_news'
         end
       end
     }

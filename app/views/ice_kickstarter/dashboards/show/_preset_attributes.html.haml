@@ -1,0 +1,11 @@
+%dl.dl-horizontal
+  %dt
+    Preset-Attributes:
+
+  %dd
+    - attributes.each do |attribute, preset|
+      %div
+        = attribute
+
+        %small
+          \= #{preset}

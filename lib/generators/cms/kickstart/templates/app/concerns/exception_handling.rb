@@ -1,0 +1,36 @@
+module ExceptionHandling
+  extend ActiveSupport::Concern
+
+  included do
+    unless config.consider_all_requests_local
+      rescue_from(RailsConnector::ResourceNotFound, with: :not_found)
+      rescue_from(ActiveResource::ResourceNotFound, with: :not_found)
+    end
+  end
+
+  def not_found
+    options = {
+      status: 404,
+    }
+
+    respond_to do |type|
+      type.html do
+        @obj = Homepage.for_hostname(request.host).error_404_page
+
+        if @obj.present?
+          options[:template] = 'error_page/index'
+        else
+          options[:file] = 'public/404'
+          options[:layout] = false
+        end
+
+        render(options)
+      end
+      type.all do
+        options[nothing: true]
+
+        render(options)
+      end
+    end
+  end
+end

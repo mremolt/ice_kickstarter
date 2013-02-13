@@ -12,4 +12,4 @@ RSpec::Core::RakeTask.new(:spec)
 require 'ice_kickstarter/rake/integration_task'
 IceKickstarter::Rake::IntegrationTask.new
 
-task :default => :spec
+task default: :spec

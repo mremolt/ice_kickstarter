@@ -1,3 +1,4 @@
-class BoxImage < ::RailsConnector::Obj
+class BoxImage < Obj
+  include Cms::Attributes::SortKey
   include Box
 end

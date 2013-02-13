@@ -1,11 +1,10 @@
 .box.box_image.well
-  = render(:state => :edit_marker)
+  = render(state: :edit_marker)
 
   %h3
     = display_field(@box, :title)
 
-  = link_to(cms_path(@box[:source])) do
-    = cms_image_tag(@box[:source])
+  = render({state: 'image'}, @box.source, @box.link_to)
 
   .caption
     = display_field(@box, :caption)

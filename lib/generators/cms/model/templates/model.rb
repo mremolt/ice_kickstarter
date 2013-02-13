@@ -1,2 +1,6 @@
-class <%= class_name %> < ::RailsConnector::Obj
+class <%= class_name %> < Obj
+  <%- attributes.each do |attribute| -%>
+  <%= "include Cms::Attributes::#{attribute.classify}" %>
+  <%- end -%>
+  include Page
 end
