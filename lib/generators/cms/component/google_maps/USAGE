@@ -1,0 +1,9 @@
+Description:
+    Generates a component to show a google map box with multiple pins on the website. The generator
+    adds two new obj_classes to the cms. One for the map and one for the pin. With the argument
+    --with_example_to_path=[location] it is possible to add an example map and pin to the given
+    cms location.
+
+Example:
+    `rails generate cms:component:google_maps`
+    `rails generate cms:component:google_maps --with_example_to_path=/website/de/_boxes`
