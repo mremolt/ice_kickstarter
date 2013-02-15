@@ -62,20 +62,20 @@ module Cms
           data << '$(document).ready(function() {'
           data << "  window.googleMapApp = new window.GoogleMap.App('#map_canvas', 'data-url');"
           data << '});'
-          data = data.join("\n")
+          data = data.join("\r")
 
           insert_into_file(file, data, after: insert_point)
         end
 
         def add_defaults
-          if with_example
+          if with_example?
             migration_template('example_migration.rb', 'cms/migrate/create_google_maps_example.rb')
           end
         end
 
         private
 
-        def with_example
+        def with_example?
           options[:with_example_to_path].present?
         end
 
