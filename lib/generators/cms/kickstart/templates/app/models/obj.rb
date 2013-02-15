@@ -9,12 +9,16 @@ class Obj < ::RailsConnector::BasicObj
     Homepage.for_hostname('default')
   end
 
+  def parent
+    @parent ||= super()
+  end
+
   def homepage
-    parent.homepage
+    @homepage ||= parent.homepage
   end
 
   def website
-    homepage.website
+    @website ||= homepage.website
   end
 
   def main_nav_item

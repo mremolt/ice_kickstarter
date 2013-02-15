@@ -1,7 +1,7 @@
 class MainNavigationCell < Cell::Rails
   helper :cms
 
-  cache :show, expires_in: 5.minutes do |cell, page|
+  cache(:show, expires_in: 5.minutes) do |cell, page|
     [
       Filters::EnvironmentDetection.preview_environment?,
       RailsConnector::Workspace.current.revision_id,
@@ -16,7 +16,7 @@ class MainNavigationCell < Cell::Rails
     render
   end
 
-  cache :highlight, expires_in: 1.hour do |cell, page|
+  cache(:highlight, expires_in: 1.hour) do |cell, page|
     [
       Filters::EnvironmentDetection.preview_environment?,
       RailsConnector::Workspace.current.revision_id,

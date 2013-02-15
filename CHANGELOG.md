@@ -1,4 +1,9 @@
 = v0.0.3
+  * Added two new rake tasks ```rake cms:info:attributes[workspace]``` which returns a list of
+    attributes and their type and ```rake cms:info:obj_classes[workspace]``` which returns a list of
+    object classes and their attributes. For each task the workspace can optionally be provided.
+  * BoxImage now supports a link attribute, that defines if and where the displayed image is linked
+    to.
   * Support for ```Redirect``` cms objects. They allow to create a navigation item, for example,
     that redirects to a different page.
   * Assets are now shared between deployments via ```before_migrate.rb``` deploy hook.
@@ -18,7 +23,8 @@
   * Added optional contact_page component that is connected to the WebCRM and prefills email, when
     user is logged in. Call ```rails generate cms:component:contact_page```.
   * Added ICE Developer Dashboard mounted under ```/cms/dashboard```. The dashboard
-    is only available for local requests.
+    is only available for local requests and completely separated from your Ruby on Rails
+    application.
   * Bugfix: Workspace Toggle no longer displays an empty list, when there is only one workspace.
   * Changed ```rake cms:deploy:live``` to ```rake cms:deploy``` as there is no other environment yet.
   * Added optional google analytics generator. Tracking ID and Anonymize IP Setting can

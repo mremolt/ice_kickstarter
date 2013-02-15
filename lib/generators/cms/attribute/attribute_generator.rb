@@ -37,12 +37,12 @@ module Cms
       def create_migration_file
         validate_attribute(file_name)
 
-        migration_template('migration.rb', "cms/migrate/create_#{file_name}_attribute.rb")
+        migration_template("migrations/#{type}_migration.rb", "cms/migrate/create_#{file_name}_attribute.rb")
       rescue DuplicateResourceError
       end
 
       def create_attribute_file
-        template("#{type}_attribute.rb", "app/concerns/cms/attributes/#{file_name}.rb")
+        template("modules/#{type}_attribute.rb", "app/concerns/cms/attributes/#{file_name}.rb")
       end
 
       private

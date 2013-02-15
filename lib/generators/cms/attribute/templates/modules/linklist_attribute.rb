@@ -19,9 +19,11 @@ module Cms
         <%= file_name %>.present?
       end
 
-      def error_404_page
+      <%- if max_size == 1 -%>
+      def first_<%= file_name %>
         <%= file_name %>.destination_objects.first
       end
+      <%- end -%>
     end
   end
 end
