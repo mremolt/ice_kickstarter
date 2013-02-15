@@ -6,6 +6,8 @@ module Cms
       class GoogleMapsGenerator < ::Rails::Generators::Base
         include Migration
 
+        class_options with_example_to_path: nil
+
         source_root File.expand_path('../templates', __FILE__)
 
         def copy_app_directory
@@ -65,7 +67,21 @@ module Cms
           insert_into_file(file, data, after: insert_point)
         end
 
+        def add_defaults
+          if with_example
+            migration_template('example_migration.rb', 'cms/migrate/create_google_maps_example.rb')
+          end
+        end
+
         private
+
+        def with_example
+          options[:with_example_to_path].present?
+        end
+
+        def map_path
+          options[:with_example_to_path]
+        end
 
         def map_class_name
           'BoxGoogleMaps'
