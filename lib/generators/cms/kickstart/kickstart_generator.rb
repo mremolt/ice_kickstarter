@@ -169,6 +169,10 @@ module Cms
         directory('deploy')
       end
 
+      def add_initital_components
+        Rails::Generators.invoke('cms:component:google_maps', ["--with_example_to_path=#{boxes_path}"])
+      end
+
       def extend_gitignore
         append_file('.gitignore', 'config/deploy.yml')
       end
@@ -191,6 +195,26 @@ module Cms
         content = File.read("#{Rails.root}/config/rails_connector.yml")
 
         YAML.load(content)['cms_api']['http_host']
+      end
+
+      def website_path
+        '/website'
+      end
+
+      def resources_path
+        '/resources'
+      end
+
+      def homepage_path
+        "#{website_path}/de"
+      end
+
+      def configuration_path
+        "#{homepage_path}/_configuration"
+      end
+
+      def boxes_path
+        "#{homepage_path}/_boxes"
       end
     end
   end
