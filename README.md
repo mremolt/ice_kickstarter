@@ -6,9 +6,11 @@ represents a working example, but can be fully customized within the application
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this section to your application's Gemfile:
 
-    gem 'ice_kickstarter'
+    group(:development) do
+      gem 'ice_kickstarter'
+    end
 
 Create the file `config/deploy.yml`. All necessary values can be taken from the Infopark Konsole:
 
