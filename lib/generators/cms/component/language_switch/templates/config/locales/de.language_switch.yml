@@ -1,3 +1,7 @@
 de:
-  de: DE
-  en: EN
+  language_switch:
+    de: 'DE'
+    en: 'EN'
+
+    show:
+      languages: 'Sprachen'

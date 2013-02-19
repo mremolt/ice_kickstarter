@@ -9,7 +9,6 @@ module Cms
         def copy_app_directory
           directory('app')
           directory('config')
-          directory('spec')
         end
 
         def extend_homepage
@@ -18,13 +17,10 @@ module Cms
 
           data = []
 
-          data << '  
-            .well.sidebar-nav
-              %h3
-                Languages
+          data << ''
+          data << '            = render_cell(:language_switch, :show, @obj.website.homepages, @obj.homepage)'
+          data << ''
 
-              = render_cell(:language_switch, :show, @obj)
-          '
           data = data.join("\n")
 
           insert_into_file(file, data, after: insert_point)

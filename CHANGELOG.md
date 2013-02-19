@@ -1,3 +1,8 @@
+= v0.0.5
+  * A website object can now be asked for all its homepages and returns a list of all Homepage
+    objects.
+  * A language switch allows to navigate from one language homepage to another. All languages are #
+    listed in the sidebar. The current language is not linked.
 = v0.0.3
   * BoxImage now supports a link attribute, that defines if and where the displayed image is linked
     to.

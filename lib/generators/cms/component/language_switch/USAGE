@@ -1,5 +1,5 @@
 Description:
-    Generates a language menu. It will use the homepages below the current website
+    Generates a language menu. It will link to the homepages below the current website
     (/website/de, /website/en etc...).
 
 Example:
