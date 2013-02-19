@@ -1,4 +1,6 @@
 = v0.0.5
+  * The user manager now allows to find an user by id. The remote user with this id is retrieved and
+    then mapped to an application user.
   * haml-rails is not longer required by the dashboard, but only haml. This prevents the default
     rails template engine to be set for the host application. (Thanks @mremolt)
   * A website object can now be asked for all its homepages and returns a list of all Homepage
