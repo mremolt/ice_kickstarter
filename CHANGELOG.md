@@ -3,6 +3,9 @@
     objects.
   * A language switch allows to navigate from one language homepage to another. All languages are #
     listed in the sidebar. The current language is not linked.
+= v0.0.4
+  * Added README information on how to create a ```deploy.yml``` file and what content it needs to
+    hold.
 = v0.0.3
   * Added two new rake tasks ```rake cms:info:attributes[workspace]``` which returns a list of
     attributes and their type and ```rake cms:info:obj_classes[workspace]``` which returns a list of
