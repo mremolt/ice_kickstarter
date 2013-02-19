@@ -6,9 +6,16 @@ represents a working example, but can be fully customized within the application
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this section to your application's Gemfile:
 
-    gem 'ice_kickstarter'
+    group(:development) do
+      gem 'ice_kickstarter'
+    end
+
+Create the file `config/deploy.yml`. All necessary values can be taken from the Infopark Konsole:
+
+    url: 'https://admin.saas.infopark.net/tenant_management/api/tenants/<tenant id>'
+    api_key: '<tenant api key>'
 
 And then execute:
 
@@ -215,9 +222,9 @@ details.
 ## Contributing
 
 1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
+2. Create your feature branch (`git checkout -b feature/my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
+4. Push to the branch (`git push origin feature/my-new-feature`)
 5. Create new Pull Request
 
 ## License

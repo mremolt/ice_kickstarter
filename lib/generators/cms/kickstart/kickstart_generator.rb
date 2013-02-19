@@ -61,15 +61,15 @@ module Cms
         developer_initializer_path = 'config/initializers/developer.rb'
         append_file('.gitignore', developer_initializer_path)
         template('developer.rb', developer_initializer_path)
-
-        Bundler.with_clean_env do
-          run('bundle')
-        end
       end
 
       def install_test_framework
         gem_group(:test, :development) do
           gem('rspec-rails', '2.12.2')
+        end
+
+        Bundler.with_clean_env do
+          run('bundle')
         end
 
         generate('rspec:install')
@@ -78,12 +78,12 @@ module Cms
       def create_deploy_hooks
         create_file('deploy/after_restart.rb')
         create_file('deploy/before_symlink.rb')
-        create_file('deploy/before_migrate.rb')
+        prepend_file('deploy/before_migrate.rb', 'deploy/before_migrate.rb')
         empty_directory('deploy/templates')
       end
 
       def include_and_configure_template_engine
-        gem('haml-rails', '0.3.5')
+        gem('haml-rails', '0.4')
 
         application_erb_file = 'app/views/layouts/application.html.erb'
 
