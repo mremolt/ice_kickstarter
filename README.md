@@ -137,6 +137,10 @@ To add a contact page functionality to the app:
 
     $ rails generate cms:component:contact_page
 
+To add a language switch functionality to the app:
+
+    $ rails generate cms:component:language_switch
+
 ## Rake Tasks
 
 To get an overview of all provided rake tasks:

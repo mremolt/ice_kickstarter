@@ -1,3 +1,8 @@
+= v0.0.5
+  * A website object can now be asked for all its homepages and returns a list of all Homepage
+    objects.
+  * A language switch allows to navigate from one language homepage to another. All languages are #
+    listed in the sidebar. The current language is not linked.
 = v0.0.3
   * Added two new rake tasks ```rake cms:info:attributes[workspace]``` which returns a list of
     attributes and their type and ```rake cms:info:obj_classes[workspace]``` which returns a list of
