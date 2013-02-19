@@ -1,4 +1,6 @@
 = v0.0.5
+  * haml-rails is not longer required by the dashboard, but only haml. This prevents the default
+    rails template engine to be set for the host application. (Thanks @mremolt)
   * A website object can now be asked for all its homepages and returns a list of all Homepage
     objects.
   * A language switch allows to navigate from one language homepage to another. All languages are #
