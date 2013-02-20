@@ -1,3 +1,5 @@
+# encoding = utf-8
+
 class CreateContactPage < ::RailsConnector::Migration
   def homepage_path
     '<%= homepage_path %>'
